@@ -5,5 +5,8 @@
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="footer_text">COPYRIGHT STATEMENT &amp; AUTHOR’S INFORMATION</string>
-
+	<string name="select_date">Select Date</string>
+	<string name="select_doc">Select Doctor</string>
+	
+	<string name="appoinment_text">Thanks for your great move and Welcome to our Appointment Service Panel. Here you can book, amend or cancel your pre-booked appointments. All you need is to Sign In to the panel for security reasons. \n \n Please provide the following credential to login.</string>
 </resources>

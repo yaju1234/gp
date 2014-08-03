@@ -4,58 +4,71 @@
     android:layout_height="match_parent"
     android:background="@color/white" >
 
-    <ImageView
-        android:id="@+id/iv_demo"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:src="@drawable/docs" />
+    <RelativeLayout
+        android:id="@+id/rl_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_demo"
-        android:gravity="left|top"
-        android:paddingLeft="5dp"
-        android:paddingRight="5dp"
-        android:layout_marginTop="5dp"
-        android:text="Welcome to GP Care.We provide high end to end service between user and doctor.This is the best way to make hopitality system in your home.here you can book your time slot for appionment and can view doctors profile etc."
-        android:textColor="@color/black"        
-        android:textSize="17sp" />
+        <ImageView
+            android:id="@+id/iv_demo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:src="@drawable/docs" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/iv_demo"
+            android:layout_marginTop="5dp"
+            android:gravity="left|top"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:text="Welcome to GP Care.We provide high end to end service between user and doctor.This is the best way to make hopitality system in your home.here you can book your time slot for appionment and can view doctors profile etc."
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="60dp"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" >
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="7dp"
+                android:background="@xml/round_corner"
+                android:text="Login"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/btn_register"
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:layout_marginLeft="7dp"
+                android:background="@xml/round_corner"
+                android:text="Register"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="60dp"
-        android:layout_below="@+id/textView1"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="horizontal" >
-
-        <Button
-            android:id="@+id/btn_login"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:background="@xml/round_corner"
-            android:layout_marginRight="7dp"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:text="Login" />
-        
-        <Button
-            android:id="@+id/btn_register"
-            style="?android:attr/buttonStyleSmall"
-            android:layout_width="100dp"
-            android:layout_height="40dp"
-            android:background="@xml/round_corner"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:layout_marginLeft="7dp"
-            android:text="Register" />
-
+        android:id="@+id/ll_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:orientation="vertical" >
     </LinearLayout>
 
 </RelativeLayout>

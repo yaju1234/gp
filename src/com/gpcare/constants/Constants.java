@@ -13,42 +13,21 @@ public class Constants {
 	public static String StateName,StateID,CityName,CityId;
 	
 	public static String image_path = "http://clickfordevelopers.com/demo/seedstir/upload/professional/";
-	public static String company_image_path = "http://clickfordevelopers.com/demo/seedstir/upload/company/";
-	public static String company_list_image_path = "http://clickfordevelopers.com/demo/seedstir/upload/company_photos/";
-
+	
 	public enum values{
 		USRINFO,
-		USERNAME,
-		PASSWORD,
-		IS_SIGNIN,
-		
-		
-		COMPANY_INFO,
-		COMPANY_SIGNIN_STATUS,
-		
-		/**For company*/
-		COMPANY_EMAIL,
-		COM_USERID,
-		COM_PROFILEID,
-		COMPANY_NAME,
-		COM_LOGO,
-		COMPANY_DESCRIPTION,
-		COMPANY_LOCATION,
-		COMPANY_TYPE,
-		
-		/**For Individual**/
-		USER_SIGNIN_STATUS,
-		
+		IS_SIGNIN,		
+		USER_SIGNIN_STATUS,		
 		GENDER,
-		INDIVIDUAL_EMAIL,
-		INDI_USERID,
-		INDI_PROFILEID,
-		INDI_FIRSTNAME,
-		INDI_LASTNAME,
-		INDI_ADDRESS,
-		INDI_PROFILEPIC,
-		INDI_PROFILEDESC,
-		INDI_UNIVERSITY
+		EMAIL,		
+		USERID,
+		PROFILEID,
+		FIRSTNAME,
+		LASTNAME,
+		ADDRESS,
+		PROFILEPIC,
+		DOB
+		
 		
 		}
 }

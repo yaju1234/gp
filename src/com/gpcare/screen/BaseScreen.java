@@ -9,7 +9,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 
 import com.gpcare.settings.Appsettings;
-import com.gpcare.settings.LoginInfo;
 import com.gpcare.settings.UserInfo;
 
 public class BaseScreen extends FragmentActivity implements OnClickListener{
@@ -22,7 +21,6 @@ public class BaseScreen extends FragmentActivity implements OnClickListener{
 		app = (Appsettings)getApplication();
 		if(!app.init){
 			app.init = true;
-			app.setLoginfo(new LoginInfo(this));
 			app.setUserinfo(new UserInfo(this));
 		}
 		init();

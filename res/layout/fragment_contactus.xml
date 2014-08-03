@@ -5,89 +5,99 @@
     android:background="@color/white"
     android:padding="5dp" >
 
-    <LinearLayout
-        android:id="@+id/ll_doctors_profile"
+    <ImageView
+        android:id="@+id/iv_sample"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left|top"
-        android:orientation="vertical" >
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/contact_us" />
 
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Doctor&apos;s Profile"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/iv_sample"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
 
         <LinearLayout
-            android:id="@+id/ll_doctors_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:id="@+id/ll_reach_us"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@xml/taketo_us_tab_bg"
+            android:gravity="center"
             android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Reach Us"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
-
-    </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/ll_nurse_profile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_doctors_profile"
-        android:gravity="left|top"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Nurse&apos;s Profile"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
 
         <LinearLayout
-            android:id="@+id/ll_nurse_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:id="@+id/ll_talkto_us"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@xml/reach_us_tab_bg"
+            android:gravity="center"
             android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Talk To Us"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
         </LinearLayout>
-
-    </LinearLayout>
-    
-    <LinearLayout
-        android:id="@+id/ll_stuff_profile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_nurse_profile"
-        android:gravity="left|top"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/tv_stuff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Stuff&apos;s Profile"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
 
         <LinearLayout
-            android:id="@+id/ll_stuff_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:id="@+id/ll_mail_us"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@xml/mail_us_tab_bg"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Mail Us"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:fadingEdge="none"
+        android:layout_marginTop="28dp" >
+
+        <LinearLayout
+            android:id="@+id/ll_contact_container"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_centerHorizontal="true"
             android:orientation="vertical" >
         </LinearLayout>
-
-    </LinearLayout>
+    </ScrollView>
 
 </RelativeLayout>

@@ -1,93 +1,222 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:padding="5dp" >
-
-    <LinearLayout
-        android:id="@+id/ll_doctors_profile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="left|top"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Doctor&apos;s Profile"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <LinearLayout
-            android:id="@+id/ll_doctors_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical" >
-        </LinearLayout>
-
-    </LinearLayout>
+    android:background="@color/purple_light"
+    android:fillViewport="true"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+     <LinearLayout
+         android:id="@+id/ll_appointment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple_light"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" />
     
-    <LinearLayout
-        android:id="@+id/ll_nurse_profile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_doctors_profile"
-        android:gravity="left|top"
-        android:layout_marginTop="10dp"
-        android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/textView1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Nurse&apos;s Profile"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
-
-        <LinearLayout
-            android:id="@+id/ll_nurse_container"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical" >
-        </LinearLayout>
-
-    </LinearLayout>
     
+<!-- 
     <LinearLayout
-        android:id="@+id/ll_stuff_profile"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_nurse_profile"
-        android:gravity="left|top"
-        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/purple_light"
+        android:gravity="center_horizontal"
         android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/tv_stuff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="5dp"
-            android:text="Stuff&apos;s Profile"
-            android:textColor="@color/black"
-            android:textSize="17sp" />
+     
 
         <LinearLayout
-            android:id="@+id/ll_stuff_container"
+            android:id="@+id/ll_signin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="vertical" >
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="visible" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <EditText
+                    android:id="@+id/et_username"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="username" >
+                </EditText>
+
+                <EditText
+                    android:id="@+id/et_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="password"
+                    android:inputType="textPassword" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <Button
+                        android:id="@+id/btn_login"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:paddingLeft="25dp"
+                        android:paddingRight="25dp"
+                        android:text="Login"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:paddingLeft="25dp"
+                android:paddingRight="25dp"
+                android:text="SignUp"
+                android:textSize="18sp" />
         </LinearLayout>
+      
+        <LinearLayout
+            android:id="@+id/ll_appointment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="gone" >
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/btn_reg_appointment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="Registration"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
 
-</RelativeLayout>
+            <ListView
+                android:id="@+id/list_appointment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+            </ListView>
+        </LinearLayout>
+       
+        <LinearLayout
+            android:id="@+id/ll_registration"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Please fill out the following details to complete registration"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+
+            <EditText
+                android:id="@+id/et_regno"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="GP registration Number"
+                android:inputType="number" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_fname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="First Name"
+                android:inputType="text" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_lanme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Last Name"
+                android:inputType="text" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:inputType="textEmailAddress" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_dob"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Date of Birth(dd/mm/yyyy)"
+                android:inputType="text" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_reg_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_conf_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Confirm Password"
+                android:inputType="textPassword" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Address info" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Contact" >
+            </EditText>
+
+            <EditText
+                android:id="@+id/et_emg_contact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Emergency Contact" >
+            </EditText>
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Submit"
+                android:textColor="@color/black"
+                android:textSize="17sp" />
+        </LinearLayout>
+       
+ -->
+   <!--  </LinearLayout> -->
+
+</ScrollView>

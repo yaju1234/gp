@@ -8,6 +8,8 @@ import com.gpcare.fragment.DoctorFragment;
 import com.gpcare.fragment.HomeFragment;
 import com.gpcare.fragment.InformationFragment;
 import com.gpcare.fragment.StaffFragment;
+import com.gpcare.model.SignInListener;
+import com.gpcare.model.SignUpListener;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -50,7 +52,6 @@ public class HomeScreen extends BaseScreen {
 		displayView(0);
 	}	
 
-	
 	public void onClick(View v) {
 		super.onClick(v);
 		switch (v.getId()) {
@@ -82,7 +83,7 @@ public class HomeScreen extends BaseScreen {
 	}
 	
 	private void displayView(int position) {
-		// update the main content by replacing fragments
+		
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
@@ -118,4 +119,5 @@ public class HomeScreen extends BaseScreen {
 			Log.e("MainActivity", "Error in creating fragment");
 		}
 	}
+
 }
