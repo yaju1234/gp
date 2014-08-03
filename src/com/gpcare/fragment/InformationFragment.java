@@ -9,11 +9,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class InformationFragment extends Fragment{
 	public BaseScreen base;
-	private TextView tv_gov,tv_gp,tv_lc;
+	private TextView tv_gp,tv_lc;
+	private LinearLayout ll_infozone_update;
 	
 	@SuppressLint("ValidFragment")
 	public InformationFragment(BaseScreen b){
@@ -25,7 +27,7 @@ public class InformationFragment extends Fragment{
 		
 		View view = inflater.inflate(R.layout.fragment_infozone, container, false);
 		
-		tv_gov = (TextView)view.findViewById(R.id.tv_gov);
+		ll_infozone_update = (LinearLayout)view.findViewById(R.id.ll_infozone_update);
 		tv_gp = (TextView)view.findViewById(R.id.tv_gp);
 		tv_lc = (TextView)view.findViewById(R.id.tv_lc);
 			

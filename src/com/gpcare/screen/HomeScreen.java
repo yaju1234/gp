@@ -1,16 +1,14 @@
 package com.gpcare.screen;
 
-
-
 import com.gpcare.fragment.AppointmentFragment;
 import com.gpcare.fragment.ContactusFragment;
 import com.gpcare.fragment.DoctorFragment;
 import com.gpcare.fragment.HomeFragment;
 import com.gpcare.fragment.InformationFragment;
 import com.gpcare.fragment.StaffFragment;
-import com.gpcare.model.SignInListener;
-import com.gpcare.model.SignUpListener;
+import com.gpcare.model.AdminListener;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-public class HomeScreen extends BaseScreen {
+public class HomeScreen extends BaseScreen implements AdminListener{
 	private DrawerLayout mDrawerLayout;
 	private RelativeLayout list_slidermenu = null;
 	private ImageView iv_slider = null,iv_slider_slide = null;
@@ -87,7 +85,7 @@ public class HomeScreen extends BaseScreen {
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new HomeFragment(this);
+			fragment = new HomeFragment(this,this);
 			break;
 		case 1:
 			fragment = new StaffFragment(this);
@@ -118,6 +116,13 @@ public class HomeScreen extends BaseScreen {
 			
 			Log.e("MainActivity", "Error in creating fragment");
 		}
+	}
+
+	
+	public void onAdminLogin() {
+		Intent i = new Intent(this,AdminHomeScreen.class);
+		startActivity(i);
+		finish();
 	}
 
 }

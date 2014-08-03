@@ -43,6 +43,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".HomeScreen" android:screenOrientation="portrait"></activity>
-    </application>
+    <activity android:name=".AdminHomeScreen" android:screenOrientation="portrait"></activity>
+        </application>
 
 </manifest>

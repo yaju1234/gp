@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.gpcare.model.AdminListener;
 import com.gpcare.model.SignInListener;
 import com.gpcare.model.SignInView;
 import com.gpcare.model.SignUpListener;
@@ -23,8 +24,11 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 	private Button btn_login,btn_register;
 	private LinearLayout ll_home;
 	private RelativeLayout rl_home;
+	private Button btn_admin_login = null;
+	private AdminListener listenr;
 	
-	public HomeFragment(BaseScreen b){
+	public HomeFragment(BaseScreen b,AdminListener l){
+		listenr = l;
 		base = b;
 	}
 	
@@ -44,12 +48,14 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		btn_register = (Button)view.findViewById(R.id.btn_register);
 		btn_register.setOnClickListener(this);
 		
+		btn_admin_login = (Button)view.findViewById(R.id.btn_admin_login);
+		btn_admin_login.setOnClickListener(this);
 		return view;
 	}
 
 	@Override
-	public void onSignIn(String userid, String fname, String lname,
-			String image, String dob) {
+	public void onSignIn(String userid, String fname, String lname,String email,
+			String image, String dob, String address,String contact, String emgcontact) {
 		
 	}
 
@@ -68,7 +74,7 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 			ll_home.removeAllViews();
 			ll_home.setVisibility(View.VISIBLE);
 			rl_home.setVisibility(View.GONE);
-			ll_home.addView(new SignInView(base,this,this,false).mView);
+			ll_home.addView(new SignInView(base,this,this,false,false).mView);
 			break;
 
 		case R.id.btn_register:
@@ -77,6 +83,10 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 			rl_home.setVisibility(View.GONE);
 			ll_home.addView(new SignUpView(base,this,this).mView);
 			break;
+			
+		case R.id.btn_admin_login:
+			listenr.onAdminLogin();
+			break;
 		}
 	}
 
@@ -84,6 +94,12 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 	public void CallBackFromSignUp() {
 		ll_home.setVisibility(View.VISIBLE);
 		rl_home.setVisibility(View.GONE);
-		ll_home.addView(new SignInView(base,this,this,false).mView);
+		ll_home.addView(new SignInView(base,this,this,false,false).mView);
+	}
+
+	@Override
+	public void onLodaProfile() {
+		// TODO Auto-generated method stub
+		
 	}
 }

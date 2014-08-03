@@ -4,9 +4,20 @@
     <string name="app_name">GPCare</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="footer_text">COPYRIGHT STATEMENT &amp; AUTHOR’S INFORMATION</string>
+    <string name="footer_text">©2014 GP Care Online. All Right Reserved. Authors: Mohammad Salim Uddin &amp; Dr. Ioannis Doumanis</string>
 	<string name="select_date">Select Date</string>
 	<string name="select_doc">Select Doctor</string>
 	
 	<string name="appoinment_text">Thanks for your great move and Welcome to our Appointment Service Panel. Here you can book, amend or cancel your pre-booked appointments. All you need is to Sign In to the panel for security reasons. \n \n Please provide the following credential to login.</string>
+	<string name="header_text"><u>Combined Pill may raise breast cancer risk</u></string>
+	<string name="post_text">"Some contraceptive pills double risk of breast cancer, The Daily Telegraph reports, as a new US study found an increased risk of 50% with use of the combined oral contraceptive pill, commonly called "the pill".
+The combined pill contains oestrogen and, as it is known oestrogen can stimulate breast cancer cells to grow, the potential for extra oestrogen </string>
+
+	<string name="gp_update">Current Update of your GP: 
+GP car parking will partially closed for extension work. 
+If you are using Fairlop road please take alternative road or use extra time as this road is partly blocked due to road surfacing work until 28th September 2014. 
+	    
+	</string>
+	
+	<string name="repeat_prescription_order_text">***Please note that repeat prescription is only for patient who are prescribed regular medication for a continuous period of time without seeing the doctor. Before ordering medicine please check if you actually prescribed for repeating the medicines. Your order will be verified before it processed and misuse of the service might cause you penalty. Just to remind you it might take upto 1 week for the items to reach to you. It is strongly recommended that you should order repeat prescription 1 week before you run-out of medicine to avoid coincidence***</string>
 </resources>
