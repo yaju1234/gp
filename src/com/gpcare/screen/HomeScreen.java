@@ -7,6 +7,7 @@ import com.gpcare.fragment.HomeFragment;
 import com.gpcare.fragment.InformationFragment;
 import com.gpcare.fragment.StaffFragment;
 import com.gpcare.model.AdminListener;
+import com.gpcare.model.LogoutListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-public class HomeScreen extends BaseScreen implements AdminListener{
+public class HomeScreen extends BaseScreen implements AdminListener,LogoutListener{
 	private DrawerLayout mDrawerLayout;
 	private RelativeLayout list_slidermenu = null;
 	private ImageView iv_slider = null,iv_slider_slide = null;
@@ -125,4 +126,8 @@ public class HomeScreen extends BaseScreen implements AdminListener{
 		finish();
 	}
 
+	@Override
+	public void onLogout() {
+		displayView(0);
+	}
 }

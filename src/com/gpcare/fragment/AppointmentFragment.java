@@ -1,5 +1,6 @@
 package com.gpcare.fragment;
 
+import com.gpcare.constants.Constants;
 import com.gpcare.model.SignInListener;
 import com.gpcare.model.SignInView;
 import com.gpcare.model.SignUpListener;
@@ -33,7 +34,7 @@ public class AppointmentFragment extends Fragment implements OnClickListener, Si
 		View view = inflater.inflate(R.layout.fragment_appoinment, container, false);
 		ll_appointment = (LinearLayout)view.findViewById(R.id.ll_appointment);
 		ll_appointment.removeAllViews();
-		ll_appointment.addView(new SignInView(base, this, this,true,false).mView);
+		ll_appointment.addView(new SignInView(base, this, this,true,Constants.USER).mView);
 		return view;
 	}
 	
@@ -65,18 +66,19 @@ public class AppointmentFragment extends Fragment implements OnClickListener, Si
 	
 	public void CallBackFromSignUp() {
 		ll_appointment.removeAllViews();
-		ll_appointment.addView(new SignInView(base, this, this,true,false).mView);
+		ll_appointment.addView(new SignInView(base, this, this,true,Constants.USER).mView);
 	}	
 	public void onLodaProfile() {
 		
 		
 	}
-	public void onSignIn(String userid, String fname, String lname,
+	public void onUserSignIn(String userid, String fname, String lname,
 			String email, String image, String dob, String address,
 			String contact, String emgcontact) {
 		
 		
-	}
+	}	
+	public void onAdminLogin(String fname, String lname, String email) {}
 }
 
 

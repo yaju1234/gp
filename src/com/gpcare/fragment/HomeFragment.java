@@ -10,16 +10,20 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import com.gpcare.constants.Constants;
 import com.gpcare.model.AdminListener;
 import com.gpcare.model.SignInListener;
 import com.gpcare.model.SignInView;
 import com.gpcare.model.SignUpListener;
 import com.gpcare.model.SignUpView;
+import com.gpcare.model.UserEditProfile;
+import com.gpcare.model.UserProfile;
+import com.gpcare.model.UserProfileListener;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
 import com.gpcare.screen.R.id;
 
-public class HomeFragment extends Fragment implements SignUpListener,SignInListener, OnClickListener{
+public class HomeFragment extends Fragment implements SignUpListener,SignInListener, OnClickListener,UserProfileListener{
 	public BaseScreen base;
 	private Button btn_login,btn_register;
 	private LinearLayout ll_home;
@@ -54,9 +58,12 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 	}
 
 	@Override
-	public void onSignIn(String userid, String fname, String lname,String email,
+	public void onUserSignIn(String userid, String fname, String lname,String email,
 			String image, String dob, String address,String contact, String emgcontact) {
-		
+		ll_home.removeAllViews();
+		ll_home.setVisibility(View.VISIBLE);
+		rl_home.setVisibility(View.GONE);
+		ll_home.addView(new UserProfile(base,this, image, fname, lname,email, address, dob, contact, emgcontact).mView);
 	}
 
 	@Override
@@ -74,7 +81,7 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 			ll_home.removeAllViews();
 			ll_home.setVisibility(View.VISIBLE);
 			rl_home.setVisibility(View.GONE);
-			ll_home.addView(new SignInView(base,this,this,false,false).mView);
+			ll_home.addView(new SignInView(base,this,this,false,Constants.USER).mView);
 			break;
 
 		case R.id.btn_register:
@@ -92,13 +99,30 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 
 	@Override
 	public void CallBackFromSignUp() {
+		ll_home.removeAllViews();
 		ll_home.setVisibility(View.VISIBLE);
 		rl_home.setVisibility(View.GONE);
-		ll_home.addView(new SignInView(base,this,this,false,false).mView);
+		ll_home.addView(new SignInView(base,this,this,false,Constants.USER).mView);
 	}
 
 	@Override
 	public void onLodaProfile() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onEditUserProfile(BaseScreen b, String imagepath, String fname,
+			String lname, String email, String address, String dob,
+			String contact, String conf_contact) {
+		ll_home.removeAllViews();
+		ll_home.setVisibility(View.VISIBLE);
+		rl_home.setVisibility(View.GONE);
+		ll_home.addView(new UserEditProfile(base, imagepath, fname, lname, email, address, dob, contact, conf_contact).mView);
+	}
+
+	@Override
+	public void onAdminLogin(String fname, String lname, String email) {
 		// TODO Auto-generated method stub
 		
 	}
