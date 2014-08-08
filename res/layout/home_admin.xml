@@ -1,12 +1,13 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" > 
 
-    <RelativeLayout
+     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:background="@color/white"
         android:layout_height="match_parent" >
 
         <LinearLayout
@@ -46,26 +47,26 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/footer_text"
-                android:padding="1dp"
-                android:gravity="center"
                 android:textColor="@color/black"
-                android:textSize="10sp" />
+                android:gravity="center"
+                android:textSize="12sp" />
         </LinearLayout>
 
         <FrameLayout
-            android:id="@+id/frame"
+            android:id="@+id/frame_admin"
+            android:background="@color/purple_light"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_above="@+id/ll_footer"
             android:layout_below="@+id/ll_header" >
         </FrameLayout>
-    </RelativeLayout>
+    </RelativeLayout> 
     <!-- Slider start -->
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/list_slidermenu"
         android:layout_width="170dp"
         android:layout_height="match_parent"
@@ -106,7 +107,7 @@
             android:orientation="vertical" >
 
             <LinearLayout
-                android:id="@+id/ll_home"
+                android:id="@+id/ll_profile"
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
                 android:gravity="left|center"
@@ -118,14 +119,14 @@
                     android:gravity="left|center"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:text="HOME"
+                    android:text="Profile"
                     android:textColor="#FFFFFF"
                     android:duplicateParentState="true"
                     android:textSize="17sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_staffs"
+                android:id="@+id/ll_register_patient"
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
                 android:background="#333333"
@@ -139,7 +140,47 @@
                     android:gravity="left|center"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:text="Staffs"
+                    android:text="Register Patient"
+                    android:textColor="#FFFFFF"
+                    android:duplicateParentState="true"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_update_patients_profile"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:gravity="left|center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="left|center"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Patient's Profile"
+                    android:duplicateParentState="true"
+                    android:textColor="#FFFFFF"
+                    android:textSize="17sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_staff_profile"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:background="#333333"
+                android:gravity="left|center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="#333333"
+                    android:gravity="left|center"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Staff Profile"
                     android:textColor="#FFFFFF"
                     android:duplicateParentState="true"
                     android:textSize="17sp" />
@@ -147,46 +188,6 @@
 
             <LinearLayout
                 android:id="@+id/ll_doctor_availability"
-                android:layout_width="fill_parent"
-                android:layout_height="55dp"
-                android:gravity="left|center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="left|center"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:text="Doctor’s Availability"
-                    android:duplicateParentState="true"
-                    android:textColor="#FFFFFF"
-                    android:textSize="17sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_appointment"
-                android:layout_width="fill_parent"
-                android:layout_height="55dp"
-                android:background="#333333"
-                android:gravity="left|center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#333333"
-                    android:gravity="left|center"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:text="Appointment"
-                    android:textColor="#FFFFFF"
-                    android:duplicateParentState="true"
-                    android:textSize="17sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_information_zone"
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
                 android:background="@color/black"
@@ -199,14 +200,14 @@
                     android:gravity="left|center"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:text="Information Zone"
+                    android:text="Doctor Availability"
                     android:duplicateParentState="true"
                     android:textColor="#FFFFFF"
                     android:textSize="17sp" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_contact_us"
+                android:id="@+id/ll_message_board"
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
                 android:background="#333333"
@@ -220,7 +221,65 @@
                     android:gravity="left|center"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
-                    android:text="Contact Us"
+                    android:text="Message Board"
+                    android:textColor="#FFFFFF"
+                    android:duplicateParentState="true"
+                    android:textSize="17sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_repeat_prescription"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:gravity="left|center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                   android:gravity="left|center"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Repeat Prescription"
+                    android:textColor="#FFFFFF"
+                    android:duplicateParentState="true"
+                    android:textSize="17sp" />
+            </LinearLayout>
+             <LinearLayout
+                android:id="@+id/ll_query"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:background="#333333"
+                android:gravity="left|center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="#333333"
+                    android:gravity="left|center"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Query"
+                    android:textColor="#FFFFFF"
+                    android:duplicateParentState="true"
+                    android:textSize="17sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_write_back_to_user"
+                android:layout_width="fill_parent"
+                android:layout_height="55dp"
+                android:background="#333333"
+                android:gravity="left|center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:background="#333333"
+                    android:gravity="left|center"
+                    android:orientation="vertical"
+                    android:paddingLeft="10dp"
+                    android:text="Write back to user"
                     android:textColor="#FFFFFF"
                     android:duplicateParentState="true"
                     android:textSize="17sp" />

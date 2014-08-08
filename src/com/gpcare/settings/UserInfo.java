@@ -33,7 +33,7 @@ public class UserInfo {
 		
 	}
 
-	public void SetUserInfo(String user_id,String gender,   String first_name, String last_name,String email,
+	public void SetUserInfo(String user_id,String first_name, String last_name,String email,
 			String address, String profile_pic, String dob) {
 		this.gender = gender;
 		this.email = email;

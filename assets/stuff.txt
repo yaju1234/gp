@@ -1,0 +1,64 @@
+{
+   "stuffArray":{
+      "doctorArray":[
+         {
+            "doc_name":"Amaln Dey",
+            "doc_specialization":"Cardiologist",
+            "doc_degree":"M.D",
+            "doc_image":"www.google.com"
+         },
+         {
+            "doc_name":"Amaln Dey",
+            "doc_specialization":"Cardiologist",
+            "doc_degree":"M.D",
+            "doc_image":"www.google.com"
+         },
+         {
+            "doc_name":"Amaln Dey",
+            "doc_specialization":"Cardiologist",
+            "doc_degree":"M.D",
+            "doc_image":"www.google.com"
+         }
+      ],
+      "nurseArray":[
+         {
+            "nurse_name":"Sumana Barik",
+            "nurse_specialization":"Cardiologist",
+            "nurse_degree":"B.Sc nursing",
+            "nurse_image":"www.google.com"
+         },
+         {
+            "nurse_name":"Sumana Barik",
+            "nurse_specialization":"Cardiologist",
+            "nurse_degree":"B.Sc nursing",
+            "nurse_image":"www.google.com"
+         },
+         {
+            "nurse_name":"Sumana Barik",
+            "nurse_specialization":"Cardiologist",
+            "nurse_degree":"B.Sc nursing",
+            "nurse_image":"www.google.com"
+         }
+      ],
+      "supportstuffArray":[
+         {
+            "stuff_name":"Ratan Chandra",
+            "stuff_specialization":"Cardiologist",
+            "stuff_degree":"B.Sc nursing",
+            "stuff_image":"www.google.com"
+         },
+         {
+            "stuff_name":"Ratan Chandra",
+            "stuff_specialization":"Cardiologist",
+            "stuff_degree":"B.Sc nursing",
+            "stuff_image":"www.google.com"
+         },
+         {
+            "stuff_name":"Ratan Chandra",
+            "stuff_specialization":"Cardiologist",
+            "stuff_degree":"B.Sc nursing",
+            "stuff_image":"www.google.com"
+         }
+      ]
+   }
+}

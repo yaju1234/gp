@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <RelativeLayout
+        android:layout_width="260dp"
+        android:layout_height="330dp"
+        android:background="@xml/reach_us_bg"
+        android:gravity="top|left"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:text="We will reply back to you with in 2-4 working days"
+            android:textColor="@color/black"
+            android:textSize="17sp" />
+
+        <EditText
+            android:id="@+id/et_name"
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/textView1"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:inputType="text"
+            android:hint="Name"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:layout_marginRight="20dp"
+            android:background="@xml/block_bg"
+            android:ems="10" >            
+        </EditText>
+        
+        <EditText
+            android:id="@+id/et_email"
+            android:layout_width="fill_parent"
+            android:layout_height="35dp"
+            android:layout_below="@+id/et_name"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:singleLine="true"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:layout_marginRight="20dp"
+            android:background="@xml/block_bg"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:ems="10" >            
+        </EditText>
+        
+        <EditText
+            android:id="@+id/et_message"
+            android:layout_width="240dp"
+            android:layout_height="85dp"
+            android:layout_below="@+id/et_email"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="20dp"
+            android:hint="Message"
+            android:inputType="textEmailAddress"
+            android:layout_marginRight="20dp"
+            android:background="@xml/block_bg"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+           	android:gravity="top|left"
+            >            
+        </EditText>
+        
+        <LinearLayout
+            android:id="@+id/ll_send"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@xml/round_corner"
+            android:layout_marginBottom="7dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:orientation="vertical"
+            android:text="Login" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+           		android:textSize="17sp"
+           		android:textColor="@color/white"
+                android:text="Send"
+                 />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>

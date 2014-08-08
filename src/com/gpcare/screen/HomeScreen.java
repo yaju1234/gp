@@ -7,7 +7,7 @@ import com.gpcare.fragment.HomeFragment;
 import com.gpcare.fragment.InformationFragment;
 import com.gpcare.fragment.StaffFragment;
 import com.gpcare.model.AdminListener;
-import com.gpcare.model.LogoutListener;
+import com.gpcare.model.UserProfile.LogoutListener;
 
 import android.content.Intent;
 import android.os.Bundle;

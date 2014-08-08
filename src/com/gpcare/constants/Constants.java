@@ -20,10 +20,17 @@ public class Constants {
 	public static String USER_LOGIN =   "http://devlpconsole.com/hospital/userLogin.php";
 	public static String DOCTOR_LOGIN =   "http://devlpconsole.com/hospital/userLogin.php";
 	
-	public static String USER_UPDATE_PROFILE =   "http://devlpconsole.com/hospital/userLogin.php";
+	public static String USER_UPDATE_PROFILE =   "http://devlpconsole.com/hospital/userProfileUpdate.php";
 	public static String DOCTOR_UPDATE_PROFILE =   "http://devlpconsole.com/hospital/userLogin.php";
 	
 	public static String USER_REGISTER =   "http://devlpconsole.com/hospital/userRegistration.php";
+	public static String STUFF_REGISTER =   "http://devlpconsole.com/hospital/stuffRegistration.php";
+	public static String USER_LIST =   "http://devlpconsole.com/hospital/userList.php";
+	
+	public static String USER_PRESCRIPTION = "http://devlpconsole.com/hospital/addPrescription.php";
+	public static String FETCH_PRESCRIPTION = "http://devlpconsole.com/hospital/getUserPrescription.php";
+	
+	public static String ADD_MESSAGE = "http://devlpconsole.com/hospital/addMessage.php";
 	
 	public enum values{
 		USRINFO,

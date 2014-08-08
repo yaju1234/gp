@@ -17,19 +17,23 @@ import com.gpcare.model.SignInView;
 import com.gpcare.model.SignUpListener;
 import com.gpcare.model.SignUpView;
 import com.gpcare.model.UserEditProfile;
+import com.gpcare.model.UserPrescription.UserPrescritionBackListener;
 import com.gpcare.model.UserProfile;
+
 import com.gpcare.model.UserProfileListener;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
 import com.gpcare.screen.R.id;
 
-public class HomeFragment extends Fragment implements SignUpListener,SignInListener, OnClickListener,UserProfileListener{
+public class HomeFragment extends Fragment implements SignUpListener,SignInListener, OnClickListener,UserProfileListener,UserEditProfile.UserProfileBackListener,UserPrescritionBackListener{
 	public BaseScreen base;
 	private Button btn_login,btn_register;
 	private LinearLayout ll_home;
 	private RelativeLayout rl_home;
 	private Button btn_admin_login = null;
 	private AdminListener listenr;
+	
+	String imagepath,fname,lname,address,dob,email,contact,conf_contact;
 	
 	public HomeFragment(BaseScreen b,AdminListener l){
 		listenr = l;
@@ -60,10 +64,20 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 	@Override
 	public void onUserSignIn(String userid, String fname, String lname,String email,
 			String image, String dob, String address,String contact, String emgcontact) {
+		
+		this.imagepath = image;
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.dob = dob;
+		this.contact = contact;
+		this.conf_contact = emgcontact;
+		this.address = address;
+		
 		ll_home.removeAllViews();
 		ll_home.setVisibility(View.VISIBLE);
 		rl_home.setVisibility(View.GONE);
-		ll_home.addView(new UserProfile(base,this, image, fname, lname,email, address, dob, contact, emgcontact).mView);
+		ll_home.addView(new UserProfile(base,this,this, image, fname, lname,email, address, dob, contact, emgcontact).mView);
 	}
 
 	@Override
@@ -111,7 +125,7 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		
 	}
 
-	@Override
+	/*@Override
 	public void onEditUserProfile(BaseScreen b, String imagepath, String fname,
 			String lname, String email, String address, String dob,
 			String contact, String conf_contact) {
@@ -120,10 +134,47 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		rl_home.setVisibility(View.GONE);
 		ll_home.addView(new UserEditProfile(base, imagepath, fname, lname, email, address, dob, contact, conf_contact).mView);
 	}
-
+*/
 	@Override
 	public void onAdminLogin(String fname, String lname, String email) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void onDoneClick(BaseScreen b, UserProfileListener listener,
+			String imagepath, String fname, String lname, String email,
+			String address, String dob, String contact, String conf_contact) {
+		
+		this.imagepath = imagepath;
+		this.fname = fname;
+		this.lname = lname;
+		this.email = email;
+		this.dob = dob;
+		this.contact = contact;
+		this.conf_contact = conf_contact;
+		this.address = address;
+		
+		ll_home.removeAllViews();
+		ll_home.setVisibility(View.VISIBLE);
+		rl_home.setVisibility(View.GONE);
+		ll_home.addView(new UserProfile(base,this,this, imagepath, fname, lname,email, address, dob, contact, conf_contact).mView);
+	}
+
+	@Override
+	public void onEditUserProfile(BaseScreen b, String imagepath, String fname,
+			String lname, String email, String address, String dob,
+			String contact, String conf_contact) {
+		
+	}
+
+	@Override
+	public void onPrescritionDoneClick() {
+		ll_home.removeAllViews();
+		ll_home.setVisibility(View.VISIBLE);
+		rl_home.setVisibility(View.GONE);
+		ll_home.addView(new UserProfile(base,this,this, imagepath, fname, lname,email, address, dob, contact, conf_contact).mView);
+	}
+
+	
 }

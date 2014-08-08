@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <Spinner
+        android:id="@+id/spinner_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:prompt="@string/select_date"
+       />
+   
+    <EditText
+        android:id="@+id/listView1"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:padding="5dp"
+        android:gravity="top|left"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:hint="Type your message here.."
+        android:layout_marginTop="10dp" >
+    </EditText>
+    
+    <LinearLayout
+            android:id="@+id/ll_send"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:background="@xml/round_corner"
+            android:layout_marginBottom="7dp"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="vertical"
+            android:text="Login" >
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+           		android:textSize="17sp"
+           		android:textColor="@color/white"
+                android:text="Send"
+                 />
+
+        </LinearLayout>
+
+</LinearLayout>
