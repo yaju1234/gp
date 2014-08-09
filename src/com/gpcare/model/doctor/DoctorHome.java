@@ -1,4 +1,4 @@
-package com.gpcare.model;
+package com.gpcare.model.doctor;
 
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -6,13 +6,12 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.gpcare.fragment.HomeFragment;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
 import com.gpcare.settings.ImageLoader;
 
-public class UserProfile implements OnClickListener {
-	
+public class DoctorHome implements OnClickListener,DoctorListener{
+
 	public interface LogoutListener {
 		public void onLogout();
 	}
@@ -20,30 +19,21 @@ public class UserProfile implements OnClickListener {
 	public BaseScreen base;
 	public View mView;
 	private ImageView iv_profile_image,iv_settings;
-	private TextView tv_user_name,tv_profile_location,tv_profile_email,tv_dob,tv_contact,tv_emergency_contact;
+	
 	public ImageLoader imageloader;
 	String imagepath,fname,lname,address,dob,email,contact,conf_contact;
 	public RelativeLayout rl_popup,rl_cointainer;
 	private TextView tv_edit_profile,tv_appointment,tv_repeat_prescription,tv_logout;
 	private boolean isVisiable = false;
 	private LogoutListener logoutlistener;
-	private UserProfileListener listener;
-	private HomeFragment fragment;
+	private DoctorProfileListener listener;
 	
-	
-	public UserProfile(BaseScreen b,HomeFragment fragment,UserProfileListener listener,String imagepath,String fname,String lname, String email,String address,String dob,String contact,String conf_contact){
+	public DoctorHome(BaseScreen b,String imagepath2, String fname2, String lname2, String email2, String address2, String dob2, String contact2, String conf_contact2){
 		this.base = b;
-		this.listener = listener;
-		this.fragment = fragment;
+		
 		logoutlistener = (LogoutListener)base;
-		mView = View.inflate(base, R.layout.user_profile, null);
+		mView = View.inflate(base, R.layout.home_doctor, null);
 		iv_profile_image = (ImageView)mView.findViewById(R.id.iv_profile_image);
-		tv_user_name = (TextView)mView.findViewById(R.id.tv_user_name);
-		tv_profile_location = (TextView)mView.findViewById(R.id.tv_profile_location);
-		tv_profile_email = (TextView)mView.findViewById(R.id.tv_profile_email);
-		tv_dob = (TextView)mView.findViewById(R.id.tv_dob);
-		tv_contact = (TextView)mView.findViewById(R.id.tv_contact);
-		tv_emergency_contact = (TextView)mView.findViewById(R.id.tv_emergency_contact);
 		
 		rl_popup = (RelativeLayout)mView.findViewById(R.id.rl_popup);
 		rl_popup.setVisibility(View.GONE);
@@ -65,25 +55,16 @@ public class UserProfile implements OnClickListener {
 		
 		rl_cointainer = (RelativeLayout)mView.findViewById(R.id.rl_cointainer);
 		
-		this.imagepath = imagepath;
-		this.fname = fname;
-		this.lname = lname;
-		this.email = email;
-		this.dob = dob;
-		this.contact = contact;
-		this.conf_contact = conf_contact;
-		this.address = address;
-		
 		if(!imagepath.equalsIgnoreCase("")){
-			//imageloader.DisplayImage("", iv_profile_image);
+			imageloader.DisplayImage("", iv_profile_image);
 		}
-		tv_profile_location.setText(address);
-		tv_profile_email.setText(email);
-		tv_dob.setText(dob);
-		tv_contact.setText(contact);
-		tv_emergency_contact.setText(conf_contact);
-		tv_user_name.setText(fname + " "+lname);
-		tv_profile_email.setText(email);
+		
+		loadProfileScreen();
+	}
+	
+	private void loadProfileScreen() {
+		rl_cointainer.removeAllViews();
+		rl_cointainer.addView(new DoctorPrfile(base,fname, lname,email, address, dob, contact, conf_contact).mView);
 	}
 
 	@Override
@@ -93,19 +74,18 @@ public class UserProfile implements OnClickListener {
 			rl_popup.setVisibility(View.GONE);
 			isVisiable = false;
 			rl_cointainer.removeAllViews();
-			rl_cointainer.addView(new UserEditProfile(base,listener,fragment, imagepath, fname, lname, email, address, dob, contact, conf_contact).mView);			
+			rl_cointainer.addView(new DoctorEditProfile(base,this,imagepath, fname, lname, email, address, dob, contact, conf_contact).mView);			
 			break;
 		case R.id.tv_appointment:
 			
 			break;
-		case R.id.tv_repeat_prescription:
+		case R.id.tv_leave_req:
 			rl_popup.setVisibility(View.GONE);
 			isVisiable = false;
 			rl_cointainer.removeAllViews();
-			rl_cointainer.addView(new UserPrescription(base,fragment).mviView);
+			rl_cointainer.addView(new DoctorLeaveRequest(base,this).mView);
 			break;
 		case R.id.tv_logout:
-			base.app.getUserinfo().setSession(false);
 			logoutlistener.onLogout();
 			break;
 		case R.id.iv_settings:
@@ -118,5 +98,10 @@ public class UserProfile implements OnClickListener {
 			}
 			break;
 		}
+	}
+
+	@Override
+	public void backDoctorHome() {
+		loadProfileScreen();
 	}
 }

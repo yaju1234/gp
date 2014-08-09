@@ -16,6 +16,10 @@ public class UserInfo {
 	public String address = null;
 	public String profile_pic = null;
 	public String dob = null;
+	public String image = "";
+	public String contact = null;
+	public String emrg_contact = null;
+	public boolean session = false;
 	
 	public SharedPreferences preference = null;
 	
@@ -23,19 +27,22 @@ public class UserInfo {
 		
 		preference = ctx.getSharedPreferences(Constants.values.USRINFO.name(), Context.MODE_PRIVATE);
 		user_id = preference.getString(Constants.values.USERID.name(), null);
-		gender = preference.getString(Constants.values.GENDER.name(), null);
+		image = preference.getString(Constants.values.IMAGE.name(), "");
 		first_name = preference.getString(Constants.values.FIRSTNAME.name(), null);
 		last_name = preference.getString(Constants.values.LASTNAME.name(), null);
 		email = preference.getString(Constants.values.EMAIL.name(), null);		
 		address = preference.getString(Constants.values.ADDRESS.name(), null);
 		profile_pic = preference.getString(Constants.values.PROFILEPIC.name(), null);
 		dob = preference.getString(Constants.values.DOB.name(), null);
+		contact = preference.getString(Constants.values.CONTACT.name(), null);
+		emrg_contact = preference.getString(Constants.values.EMRG_CONTACT.name(), null);
+		session =  preference.getBoolean(Constants.values.SESSION.name(), false);
 		
 	}
 
-	public void SetUserInfo(String user_id,String first_name, String last_name,String email,
-			String address, String profile_pic, String dob) {
-		this.gender = gender;
+	public void SetUserInfo(String user_id,String first_name, String last_name,String email,String image,
+			String address, String profile_pic, String dob,String contact,String emrg_contact,boolean session) {
+		this.image = image;
 		this.email = email;
 		this.user_id = user_id;
 		this.first_name = first_name;
@@ -43,23 +50,29 @@ public class UserInfo {
 		this.address = address;
 		this.profile_pic = profile_pic;
 		this.dob = dob;
+		this.contact = contact;
+		this.emrg_contact = emrg_contact;
+		this.session = session;
 		
 		Editor edit = preference.edit();
 		edit.putString(Constants.values.USERID.name(), user_id);
-		edit.putString(Constants.values.GENDER.name(), gender);
+		edit.putString(Constants.values.IMAGE.name(), gender);
 		edit.putString(Constants.values.FIRSTNAME.name(), first_name);
 		edit.putString(Constants.values.LASTNAME.name(), last_name);
 		edit.putString(Constants.values.EMAIL.name(), email);		
 		edit.putString(Constants.values.ADDRESS.name(), address);
 		edit.putString(Constants.values.PROFILEPIC.name(), profile_pic);
-		dob = preference.getString(Constants.values.DOB.name(), dob);
+		edit.putString(Constants.values.DOB.name(), dob);
+		edit.putString(Constants.values.CONTACT.name(), contact);
+		edit.putString(Constants.values.EMRG_CONTACT.name(), emrg_contact);
+		edit.putBoolean(Constants.values.SESSION.name(), session);
 		edit.commit();
 	}
 
 	public void setGender(String gender) {
 		this.gender = gender;
 		Editor edit = preference.edit();
-		edit.putString(Constants.values.GENDER.name(), gender);		
+		edit.putString(Constants.values.IMAGE.name(), gender);		
 		edit.commit();
 	}
 
@@ -74,6 +87,27 @@ public class UserInfo {
 		this.user_id = user_id;
 		Editor edit = preference.edit();
 		edit.putString(Constants.values.USERID.name(), user_id);		
+		edit.commit();
+	}
+	
+	public void setSession(Boolean flag) {
+		this.session = flag;
+		Editor edit = preference.edit();
+		edit.putBoolean(Constants.values.SESSION.name(), session);		
+		edit.commit();
+	}
+	
+	public void setContact(String contact) {
+		this.contact = contact;
+		Editor edit = preference.edit();
+		edit.putString(Constants.values.CONTACT.name(), contact);		
+		edit.commit();
+	}
+
+	public void setEmrgContact(String emrg_contact) {
+		this.emrg_contact = emrg_contact;
+		Editor edit = preference.edit();
+		edit.putString(Constants.values.EMRG_CONTACT.name(), emrg_contact);		
 		edit.commit();
 	}
 
@@ -105,6 +139,11 @@ public class UserInfo {
 		edit.putString(Constants.values.PROFILEPIC.name(), profile_pic);		
 		edit.commit();
 	}
-
-
+	
+	public void setSession(boolean session) {
+		this.session = session;
+		Editor edit = preference.edit();
+		edit.putBoolean(Constants.values.SESSION.name(), session);		
+		edit.commit();
+	}
 }

@@ -24,6 +24,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 	private DrawerLayout mDrawerLayout;
 	private RelativeLayout list_slidermenu = null;
 	private ImageView iv_slider = null,iv_slider_slide = null;
+	private boolean flag = false;
 	private LinearLayout ll_home = null,ll_staffs = null,ll_doctor_availability = null,ll_appointment = null,ll_information_zone = null,ll_contact_us = null;
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,7 +49,20 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		ll_information_zone.setOnClickListener(this);
 		ll_contact_us.setOnClickListener(this);
 		mDrawerLayout.closeDrawers();
-		displayView(0);
+		if(app.getAdmininfo().session){
+			onAdminLogin();
+		}else{
+			displayView(0);
+		}
+		
+		if(app.getUserinfo().session){
+			System.out.println("!--reach here");
+			flag = true;
+			displayView(0);
+		}else{
+			flag = false;
+			displayView(0);
+		}
 	}	
 
 	public void onClick(View v) {
@@ -86,7 +100,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new HomeFragment(this,this);
+			fragment = new HomeFragment(this,this,flag);
 			break;
 		case 1:
 			fragment = new StaffFragment(this);
@@ -103,9 +117,6 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		case 5:
 			fragment = new ContactusFragment(this);
 			break;
-
-		default:
-			break;
 		}
 
 		if (fragment != null) {
@@ -119,7 +130,6 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		}
 	}
 
-	
 	public void onAdminLogin() {
 		Intent i = new Intent(this,AdminHomeScreen.class);
 		startActivity(i);
@@ -128,6 +138,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 
 	@Override
 	public void onLogout() {
+		flag = false;
 		displayView(0);
 	}
 }

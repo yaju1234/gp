@@ -3,11 +3,6 @@ package com.gpcare.model;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.gpcare.constants.Constants;
-import com.gpcare.network.HttpClient;
-import com.gpcare.screen.BaseScreen;
-import com.gpcare.screen.R;
-
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,6 +10,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.gpcare.constants.Constants;
+import com.gpcare.network.HttpClient;
+import com.gpcare.screen.BaseScreen;
+import com.gpcare.screen.R;
 
 public class SignInView implements OnClickListener{
 	
@@ -134,7 +134,7 @@ public class SignInView implements OnClickListener{
 					address  = jsonres.getString("address");
 					contact  = jsonres.getString("contact");
 					emg_contact  = jsonres.getString("emrg_contact");
-					base.app.getUserinfo().SetUserInfo(userid, fname, lname,email,  address, image,dob);
+					base.app.getUserinfo().SetUserInfo(userid, fname, lname,email,image,address,image,dob,contact,emg_contact,true);
 					}
 					updateUi();
 				}
@@ -150,7 +150,9 @@ public class SignInView implements OnClickListener{
 			@Override
 			public void run() {
 				if(type == 1 ){	
-					listener.onUserSignIn(userid,fname,lname,email,image,dob,address,contact,emg_contact);
+					listener.onUserSignIn(fname,lname,email,image,dob,address,contact,emg_contact);
+				}else if(type == 2){
+					listener.onCallToDoctorProfile(fname,lname,email,image,dob,address,contact,emg_contact);
 				}else if(type == 3){
 					listener.onAdminLogin(fname, lname, email);
 				}

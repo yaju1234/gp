@@ -24,6 +24,7 @@ public class Constants {
 	public static String DOCTOR_UPDATE_PROFILE =   "http://devlpconsole.com/hospital/userLogin.php";
 	
 	public static String USER_REGISTER =   "http://devlpconsole.com/hospital/userRegistration.php";
+	public static String EDIT_ADMIN_PROFILE  = "http://devlpconsole.com/hospital/adminProfileUpdate.php";
 	public static String STUFF_REGISTER =   "http://devlpconsole.com/hospital/stuffRegistration.php";
 	public static String USER_LIST =   "http://devlpconsole.com/hospital/userList.php";
 	
@@ -34,9 +35,10 @@ public class Constants {
 	
 	public enum values{
 		USRINFO,
+		ADMININFO,
 		IS_SIGNIN,		
 		USER_SIGNIN_STATUS,		
-		GENDER,
+		IMAGE,
 		EMAIL,		
 		USERID,
 		PROFILEID,
@@ -44,7 +46,10 @@ public class Constants {
 		LASTNAME,
 		ADDRESS,
 		PROFILEPIC,
-		DOB
+		DOB,
+		CONTACT,
+		EMRG_CONTACT,
+		SESSION
 		
 		}
 }

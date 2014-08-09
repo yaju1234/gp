@@ -1,16 +1,5 @@
 package com.gpcare.screen;
 
-
-
-import com.gpcare.fragment.admin.AdminProfileFragment;
-import com.gpcare.fragment.admin.AdminRegisterPatirntFragment;
-import com.gpcare.fragment.admin.AdminRepeatPrescriptionFragment;
-import com.gpcare.fragment.admin.AdminUpadteStaffProfileFragment;
-import com.gpcare.fragment.admin.AdminUpdateDoctorsAvailabalityFragment;
-import com.gpcare.fragment.admin.AdminUpdateMessageBoardFragment;
-import com.gpcare.fragment.admin.AdminViewQueryFragment;
-import com.gpcare.model.admin.SignUpView.onAdminSignUpForuserListener;
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -20,6 +9,16 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
+
+import com.gpcare.fragment.admin.AdminLoginFragment;
+import com.gpcare.fragment.admin.AdminRegisterPatirntFragment;
+import com.gpcare.fragment.admin.AdminRepeatPrescriptionFragment;
+import com.gpcare.fragment.admin.AdminUpadteStaffProfileFragment;
+import com.gpcare.fragment.admin.AdminUpdateDoctorsAvailabalityFragment;
+import com.gpcare.fragment.admin.AdminUpdateMessageBoardFragment;
+import com.gpcare.fragment.admin.AdminViewQueryFragment;
+import com.gpcare.model.admin.SignUpView.onAdminSignUpForuserListener;
 
 public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserListener {
 	private DrawerLayout mDrawerLayout;
@@ -30,7 +29,7 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 			ll_doctor_availability, ll_message_board, ll_repeat_prescription,
 			ll_query, ll_write_back_to_user;
 	
-	
+	private TextView tv_page_title;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home_admin);
@@ -48,8 +47,9 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 		ll_repeat_prescription = (LinearLayout)findViewById(R.id.ll_repeat_prescription);
 		ll_query = (LinearLayout)findViewById(R.id.ll_query);
 		ll_write_back_to_user = (LinearLayout)findViewById(R.id.ll_write_back_to_user);
+		tv_page_title = (TextView)findViewById(R.id.tv_page_title);
 		
-	   iv_slider.setOnClickListener(this);
+		iv_slider.setOnClickListener(this);
 		iv_slider_slide.setOnClickListener(this);
 		mDrawerLayout.closeDrawers();	
 		
@@ -76,27 +76,52 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 			mDrawerLayout.closeDrawers();
 			break;	
 		case R.id.ll_profile:
+			
 			displayView(0);
 			break;
 		case R.id.ll_register_patient:
-			displayView(1);
+			if(app.getAdmininfo().session){
+				displayView(1);	
+			}else{
+				displayView(0);
+			}
+			
 			break;
 		case R.id.ll_staff_profile:
-			displayView(2);
+			if(app.getAdmininfo().session){
+				displayView(2);	
+			}else{
+				displayView(0);
+			}
 			break;
 		case R.id.ll_doctor_availability:
-			displayView(3);
+			if(app.getAdmininfo().session){
+				displayView(3);	
+			}else{
+				displayView(0);
+			}
 			break;
 		case R.id.ll_message_board:
-			displayView(4);
+			if(app.getAdmininfo().session){
+				displayView(4);	
+			}else{
+				displayView(0);
+			}
 			break;
 		case R.id.ll_repeat_prescription:
-			displayView(5);
+			if(app.getAdmininfo().session){
+				displayView(5);	
+			}else{
+				displayView(0);
+			}
 			break;
 		case R.id.ll_query:
-			displayView(6);
+			if(app.getAdmininfo().session){
+				displayView(6);	
+			}else{
+				displayView(0);
+			}
 			break;
-		
 		}
 	}
 	
@@ -105,7 +130,8 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new AdminProfileFragment(this);
+			tv_page_title.setText("Admin Profile");
+			fragment = new AdminLoginFragment(this);
 			break;
 		case 1:
 			fragment = new AdminRegisterPatirntFragment(this);
@@ -125,13 +151,11 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 		case 6:
 			fragment = new AdminViewQueryFragment(this);
 			break;
-
 		}
 
 		if (fragment != null) {
 			FragmentManager fragmentManager = getSupportFragmentManager();
-			fragmentManager.beginTransaction()
-					.replace(R.id.frame_admin, fragment).commit();
+			fragmentManager.beginTransaction().replace(R.id.frame_admin, fragment).commit();
 			mDrawerLayout.closeDrawers();
 		} else {
 			
@@ -139,9 +163,18 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 		}
 	}
 
-	
 	public void onSignU() {
 		displayView(1);	
 	}
-
+	public void onLogout() {
+		app.getAdmininfo().setSession(false);
+		displayView(0);
+	}
+	
+	public void onUpdateAdminProfile() {
+		displayView(0);
+	}
+	public void onAdminSignIn(String id,String fname, String lname, String email, String image) {
+		displayView(0);
+	}
 }

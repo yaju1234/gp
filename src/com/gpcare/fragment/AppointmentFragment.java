@@ -1,12 +1,5 @@
 package com.gpcare.fragment;
 
-import com.gpcare.constants.Constants;
-import com.gpcare.model.SignInListener;
-import com.gpcare.model.SignInView;
-import com.gpcare.model.SignUpListener;
-import com.gpcare.model.SignUpView;
-import com.gpcare.screen.BaseScreen;
-import com.gpcare.screen.R;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -16,6 +9,15 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+
+import com.gpcare.constants.Constants;
+import com.gpcare.model.SignInListener;
+import com.gpcare.model.SignInView;
+import com.gpcare.model.SignUpListener;
+import com.gpcare.model.SignUpView;
+import com.gpcare.screen.BaseScreen;
+import com.gpcare.screen.R;
+
 
 @SuppressLint("ValidFragment")
 public class AppointmentFragment extends Fragment implements OnClickListener, SignInListener,SignUpListener{
@@ -68,6 +70,7 @@ public class AppointmentFragment extends Fragment implements OnClickListener, Si
 		ll_appointment.removeAllViews();
 		ll_appointment.addView(new SignInView(base, this, this,true,Constants.USER).mView);
 	}	
+	
 	public void onLodaProfile() {
 		
 		
@@ -79,6 +82,22 @@ public class AppointmentFragment extends Fragment implements OnClickListener, Si
 		
 	}	
 	public void onAdminLogin(String fname, String lname, String email) {}
+
+	@Override
+	public void onUserSignIn(String fname, String lname, String email,
+			String image, String dob, String address, String contact,
+			String emgcontact) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onCallToDoctorProfile(String imagepath, String fname,
+			String lname, String email, String address, String dob,
+			String contact, String conf_contact) {
+		// TODO Auto-generated method stub
+		
+	}
 }
 
 

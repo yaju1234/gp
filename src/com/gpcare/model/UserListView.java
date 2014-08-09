@@ -30,13 +30,7 @@ public class UserListView implements OnClickListener{
 		ll_user.setOnClickListener(this);
 	}
 	
-	/**
-	 *  {"userArray":{"reg_no":"suman","name":"suman saha","username":"saha@gmail.com","dob":"1991-12-10",
-	 *  "address":"fhhjhvbjkjgffrtiigrfujhgfffg","contact":"9674448739",
-	 *  "emrg_contact":"9674448739","image":""}}
-
-	 */
-
+	
 	
 	public void onClick(View v) {
 		switch (v.getId()) {

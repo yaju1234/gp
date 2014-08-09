@@ -91,15 +91,7 @@
                         android:visibility="gone" />
                 </LinearLayout>
 
-                <Button
-                    android:id="@+id/btn_logout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:paddingLeft="10dp"
-                    android:paddingRight="10dp"
-                    android:text="Logout" />
+                
                 
             </RelativeLayout>
             
@@ -197,41 +189,42 @@
                         android:textSize="16sp" />
                 </RelativeLayout>
 
-                <LinearLayout
+                <RelativeLayout
                     android:id="@+id/ll_small_devider"
                     android:layout_width="290dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/rl_interest"
                     android:background="@drawable/doted_devider"
-                    android:orientation="vertical" >
-                </LinearLayout>
+                    android:orientation="horizontal" >
 
-                <LinearLayout
-                    android:id="@+id/ll_contact_devider"
-                    android:layout_width="290dp"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/ll_small_devider"
-                    android:background="@drawable/doted_devider"
-                    android:orientation="vertical" >
-                </LinearLayout>
+                   
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:id="@+id/rl_emeregncy_contact"
                     android:layout_width="match_parent"
-                    android:layout_height="35dp"
-                    android:layout_below="@+id/ll_contact_devider"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ll_small_devider"
+                    android:layout_marginTop="40dp"
                     android:background="@color/white" >
 
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
+                    <Button
+                        android:id="@+id/btn_edit_profile"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginLeft="30dp"
-                        android:src="@drawable/emergency_contact_icon" />
+                        android:layout_alignParentTop="true"
+                        android:text="Edit" />
+
+                    <Button
+                        android:id="@+id/btn_logout"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentTop="true"
+                        android:text="Logout" />
+                  
                 </RelativeLayout>
             </RelativeLayout>
             

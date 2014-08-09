@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:gravity="left|top"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enter Date"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/ed_date"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:padding="2dp"
+        android:gravity="left|top"
+        android:hint="Enter your date"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:layout_marginTop="3dp"
+        android:background="@xml/block_bg"
+        android:singleLine="true" >
+    </EditText>
+
+    <EditText
+        android:id="@+id/ed_message"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:background="@xml/block_bg"
+        android:gravity="left|top"
+        android:hint="Enter your message"
+        android:padding="5dp"
+        android:textColor="@color/black"
+        android:textSize="15sp" >
+    </EditText>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_reg_devider"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="7dp"
+            android:background="@xml/round_corner"
+            android:text="Send"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_done"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="7dp"
+            android:background="@xml/round_corner"
+            android:text="Done"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>

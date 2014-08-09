@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:padding="7dp"
+    android:scrollbars="none" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/rl_header"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+             >
+
+            <RelativeLayout
+                android:id="@+id/rl_username_header"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@drawable/profile_user_bg"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/ll_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="fill_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp" >
+
+                    <ImageView
+                        android:id="@+id/imageView1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom"
+                        android:layout_marginBottom="3dp"
+                        android:layout_marginRight="-9dp"
+                        android:src="@drawable/camera_icon" />
+
+                    <LinearLayout
+                        android:id="@+id/ll_upload_image"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:gravity="center" >
+
+                        <com.gpcare.settings.CircleImageView
+                            android:id="@+id/iv_profile_image"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/frnd_no_img"
+                            app:border_color="#000000"
+                            app:border_width="1dp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayout1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/ll_image"
+                    android:orientation="vertical" >
+
+                    <TextView
+                        android:id="@+id/tv_user_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Kim Lee"
+                        android:textColor="#2b2b2b"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Salt Lake City"
+                        android:textColor="#969696"
+                        android:textSize="11sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/iv_settings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="24dp"
+                    android:src="@drawable/settings_icon" />
+                
+                
+            </RelativeLayout>
+            
+            
+
+            <RelativeLayout
+                android:id="@+id/rl_cointainer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/rl_username_header"
+                android:layout_gravity="center"
+                android:background="@color/white" >
+
+                
+            </RelativeLayout>
+			<RelativeLayout
+                android:id="@+id/rl_popup"
+                android:layout_width="130dp"
+                android:layout_height="120dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="50dp"
+                android:background="@color/ash"
+                android:gravity="center|top" >
+
+                <TextView
+                    android:id="@+id/tv_edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:text="Edit Profile"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_leave_req"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_edit_profile"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:text="Leave Request"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tv_repeat_prescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_appointment"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:text="Logout"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+               
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+
+</ScrollView>

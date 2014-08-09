@@ -8,7 +8,7 @@
         android:id="@+id/ll_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="@xml/custom_block_bg"
         android:padding="5dp"
         android:orientation="horizontal" >
 
@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:duplicateParentState="true"
-            android:src="@drawable/no_img" />
+            android:src="@drawable/frnd_no_img" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -25,7 +25,7 @@
             android:layout_marginLeft="10dp"
             android:gravity="center|left"
             android:textColor="@color/black"
-            android:textSize="15sp"
+            android:textSize="18sp"
             android:duplicateParentState="true"
             android:layout_height="fill_parent"
             android:text="TextView" />

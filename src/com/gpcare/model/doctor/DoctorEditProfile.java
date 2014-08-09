@@ -1,56 +1,43 @@
-package com.gpcare.model;
+package com.gpcare.model.doctor;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView.FindListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gpcare.constants.Constants;
 import com.gpcare.fragment.HomeFragment;
+import com.gpcare.model.UserProfileListener;
 import com.gpcare.network.HttpClient;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
-import com.gpcare.settings.ImageLoader;
 
-public class UserEditProfile implements OnClickListener{
+public class DoctorEditProfile implements OnClickListener {
 
-	public interface UserProfileBackListener {
-		public void onDoneClick(BaseScreen b,UserProfileListener listener,String imagepath,String fname,String lname, String email,String address,String dob,String contact,String conf_contact);
-	}
-	
 	public BaseScreen base;
 	public View mView;
-	private UserProfileBackListener listenner;
-	
-	private ImageView iv_profile_image;
-	private TextView tv_dob;
-	private EditText et_profile_location,et_profile_email,et_contact,et_emergency_contact;
-	public ImageLoader imageloader;
 	String imagepath,fname,lname,address,dob,email,contact,conf_contact;
 	private Button btn_update,btn_done;
 	private boolean isClicked = false;
-	private UserProfileListener listenerprofile;
-	private HomeFragment fragment;
+	private TextView tv_dob;
+	private EditText et_profile_location,et_profile_email,et_contact,et_emergency_contact;
+	public DoctorHome doctorHome;
 	
-	public UserEditProfile(BaseScreen b,UserProfileListener listenerprofile,HomeFragment fragment,String imagepath,String fname,String lname, String email,String address,String dob,String contact,String conf_contact){
+	
+	public DoctorEditProfile(BaseScreen b,DoctorHome doctorHome, String imagepath,String fname,String lname, String email,String address,String dob,String contact,String conf_contact){
 		this.base = b;
-		this.listenerprofile = listenerprofile;
-		listenner = (UserProfileBackListener) fragment;
-		mView = View.inflate(base, R.layout.user_update_profile, null);
-		iv_profile_image = (ImageView)mView.findViewById(R.id.iv_profile_image);
-		et_profile_location = (EditText)mView.findViewById(R.id.et_profile_location);
+		this.doctorHome = doctorHome;
+		mView = View.inflate(base, R.layout.doctor_update_profile, null);
+		
 		et_profile_email = (EditText)mView.findViewById(R.id.et_profile_email);
 		tv_dob = (TextView)mView.findViewById(R.id.tv_dob);
 		et_contact = (EditText)mView.findViewById(R.id.et_contact);
 		et_emergency_contact = (EditText)mView.findViewById(R.id.et_emergency_contact);
-		this.imagepath = imagepath;
 		
 		btn_update = (Button)mView.findViewById(R.id.btn_update);
 		btn_update.setOnClickListener(this);
@@ -58,17 +45,13 @@ public class UserEditProfile implements OnClickListener{
 		btn_done = (Button)mView.findViewById(R.id.btn_done);
 		btn_done.setOnClickListener(this);
 		
-		if(!imagepath.equalsIgnoreCase("")){
-			imageloader.DisplayImage("", iv_profile_image);
-		}
 		et_profile_location.setText(address);
 		et_profile_email.setText(email);
 		tv_dob.setText(dob);
 		et_contact.setText(contact);
 		et_emergency_contact.setText(conf_contact);
-		
 	}
-
+	
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -81,9 +64,10 @@ public class UserEditProfile implements OnClickListener{
 			}
 			break;		
 		case R.id.btn_done:
-			listenner.onDoneClick(base, listenerprofile, imagepath, fname, lname, email, address, dob, contact, conf_contact);
+			doctorHome.backDoctorHome();
 		}
 	}
+	
 	private void doUpdateProfile() {
 		Thread t = new Thread(){
 			public void run(){

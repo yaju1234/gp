@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/white"
+    android:fillViewport="true"
+    android:orientation="vertical"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <LinearLayout
+                android:id="@+id/ll_summary_header"
+                android:layout_width="fill_parent"
+                android:layout_height="30dp"
+                android:layout_alignParentTop="true"
+                android:background="#464646"
+                android:gravity="center|left"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:text="Summary"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/frnd_no_img" />
+
+            <EditText
+                android:id="@+id/et_fname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+               android:layout_marginTop="5dp"
+                android:gravity="center|left"
+                android:inputType="text"
+                android:text="First Name"
+                android:textColor="#142840"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_lname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center|left"
+                android:inputType="text"
+                 android:text="last Name"
+                android:textColor="#142840"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center|left"
+                android:inputType="text"
+                android:text="Email"
+                android:textColor="#142840"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/btn_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                 android:layout_marginTop="20dp"
+                android:layout_alignParentTop="true"
+                android:text="Update" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>

@@ -8,21 +8,15 @@ import org.json.JSONObject;
 
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
-import android.text.InputFilter.LengthFilter;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
-import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gpcare.constants.Constants;
