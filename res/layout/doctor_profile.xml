@@ -65,6 +65,7 @@
             android:layout_below="@+id/ll_university_devider"
             android:layout_marginTop="6dp"
             android:background="@color/white"
+            android:visibility="gone"
             android:orientation="vertical"
             android:paddingBottom="3dp" >
 
@@ -153,10 +154,10 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="30dp"
-                android:src="@drawable/dob_icon" />
+                android:src="@drawable/degree_icon" />
 
             <TextView
-                android:id="@+id/tv_dob"
+                android:id="@+id/tv_degree"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/imageView4"
@@ -191,10 +192,11 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="30dp"
+                android:visibility="invisible"
                 android:src="@drawable/contact_icon" />
 
             <TextView
-                android:id="@+id/tv_contact"
+                android:id="@+id/tv_specilization"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignTop="@+id/imageView4"
@@ -215,33 +217,7 @@
             android:orientation="vertical" >
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/rl_emeregncy_contact"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_below="@+id/ll_contact_devider"
-            android:background="@color/white" >
-
-            <ImageView
-                android:id="@+id/imageView4"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="30dp"
-                android:src="@drawable/emergency_contact_icon" />
-
-            <TextView
-                android:id="@+id/tv_emergency_contact"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/imageView4"
-                android:layout_marginLeft="32dp"
-                android:layout_toRightOf="@+id/imageView4"
-                android:text="09804578348"
-                android:textColor="#142840"
-                android:textSize="16sp" />
-        </RelativeLayout>
+        
 
         <LinearLayout
             android:layout_width="290dp"

@@ -25,9 +25,9 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 	private RelativeLayout list_slidermenu = null;
 	private ImageView iv_slider = null,iv_slider_slide = null;
 	private LinearLayout ll_profile, ll_register_patient,
-			ll_update_patients_profile, ll_staff_profile,
+			/*ll_update_patients_profile,*/ ll_staff_profile,
 			ll_doctor_availability, ll_message_board, ll_repeat_prescription,
-			ll_query, ll_write_back_to_user;
+			ll_query/*, ll_write_back_to_user*/;
 	
 	private TextView tv_page_title;
 	protected void onCreate(Bundle savedInstanceState) {
@@ -40,13 +40,13 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 		
 		ll_profile = (LinearLayout)findViewById(R.id.ll_profile);
 		ll_register_patient = (LinearLayout)findViewById(R.id.ll_register_patient);
-		ll_update_patients_profile = (LinearLayout)findViewById(R.id.ll_update_patients_profile);
+		//ll_update_patients_profile = (LinearLayout)findViewById(R.id.ll_update_patients_profile);
 		ll_staff_profile = (LinearLayout)findViewById(R.id.ll_staff_profile);
 		ll_doctor_availability = (LinearLayout)findViewById(R.id.ll_doctor_availability);
 		ll_message_board = (LinearLayout)findViewById(R.id.ll_message_board);
 		ll_repeat_prescription = (LinearLayout)findViewById(R.id.ll_repeat_prescription);
 		ll_query = (LinearLayout)findViewById(R.id.ll_query);
-		ll_write_back_to_user = (LinearLayout)findViewById(R.id.ll_write_back_to_user);
+		//ll_write_back_to_user = (LinearLayout)findViewById(R.id.ll_write_back_to_user);
 		tv_page_title = (TextView)findViewById(R.id.tv_page_title);
 		
 		iv_slider.setOnClickListener(this);
@@ -55,13 +55,13 @@ public class AdminHomeScreen extends BaseScreen implements onAdminSignUpForuserL
 		
 		ll_profile.setOnClickListener(this);
 		ll_register_patient.setOnClickListener(this);
-		ll_update_patients_profile.setOnClickListener(this);
+		//ll_update_patients_profile.setOnClickListener(this);
 		ll_staff_profile.setOnClickListener(this);
 		ll_doctor_availability.setOnClickListener(this);
 		ll_message_board.setOnClickListener(this);
 		ll_repeat_prescription.setOnClickListener(this);
 		ll_query.setOnClickListener(this);
-		ll_write_back_to_user.setOnClickListener(this);
+		//ll_write_back_to_user.setOnClickListener(this);
 		
 		displayView(0);
 	}	

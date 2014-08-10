@@ -10,10 +10,10 @@ public class DoctorPrfile {
 
 	public BaseScreen base;
 	public View mView;
-	String imagepath,fname,lname,address,dob,email,contact,conf_contact;
-	private TextView tv_user_name,tv_profile_location,tv_profile_email,tv_dob,tv_contact,tv_emergency_contact;
+	String imagepath,fname,lname,email,degree,specilization;
+	private TextView tv_profile_email,tv_degree,tv_specilization;
 	
-	public DoctorPrfile(BaseScreen b, String imagepath2, String fname2, String lname2, String email2, String address2, String dob2, String contact2){
+	public DoctorPrfile(BaseScreen b, String imagepath, String fname, String lname, String email, String degree, String specilization){
 		this.base = b;
 		mView = View.inflate(base, R.layout.doctor_profile, null);
 		
@@ -21,25 +21,16 @@ public class DoctorPrfile {
 		this.fname = fname;
 		this.lname = lname;
 		this.email = email;
-		this.dob = dob;
-		this.contact = contact;
-		this.conf_contact = conf_contact;
-		this.address = address;
+		this.degree = degree;
+		this.specilization = specilization;
 		
 		
-		tv_user_name = (TextView)mView.findViewById(R.id.tv_user_name);
-		tv_profile_location = (TextView)mView.findViewById(R.id.tv_profile_location);
 		tv_profile_email = (TextView)mView.findViewById(R.id.tv_profile_email);
-		tv_dob = (TextView)mView.findViewById(R.id.tv_dob);
-		tv_contact = (TextView)mView.findViewById(R.id.tv_contact);
-		tv_emergency_contact = (TextView)mView.findViewById(R.id.tv_emergency_contact);
+		tv_degree = (TextView)mView.findViewById(R.id.tv_degree);
+		tv_specilization = (TextView)mView.findViewById(R.id.tv_specilization);
 		
-		tv_profile_location.setText(address);
 		tv_profile_email.setText(email);
-		tv_dob.setText(dob);
-		tv_contact.setText(contact);
-		tv_emergency_contact.setText(conf_contact);
-		tv_user_name.setText(fname + " "+lname);
-		tv_profile_email.setText(email);
+		tv_degree.setText(degree);
+		tv_specilization.setText(specilization);
 	}
 }

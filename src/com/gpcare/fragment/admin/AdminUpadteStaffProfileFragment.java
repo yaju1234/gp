@@ -9,7 +9,9 @@ import org.json.JSONObject;
 import com.gpcare.bean.DoctorBean;
 import com.gpcare.bean.NurseBean;
 import com.gpcare.bean.StuffBean;
+import com.gpcare.constants.Constants;
 import com.gpcare.model.admin.StuffSignUpView;
+import com.gpcare.network.HttpClient;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
 import com.gpcare.settings.ImageLoader;
@@ -41,7 +43,7 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 	private LinearLayout ll_nurse_container;
 	private LinearLayout ll_stuff_container;
 	private ImageLoader imageloader;
-	private RelativeLayout rl_body;
+	private LinearLayout ll_body;
 	private View vi;
 	
 	public AdminUpadteStaffProfileFragment(BaseScreen b){
@@ -57,7 +59,7 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 		ll_doctors_container = (LinearLayout)view.findViewById(R.id.ll_doctors_container);
 		ll_nurse_container = (LinearLayout)view.findViewById(R.id.ll_nurse_container);
 		ll_stuff_container = (LinearLayout)view.findViewById(R.id.ll_stuff_container);
-		rl_body = (RelativeLayout)view.findViewById(R.id.rl_body);
+		ll_body = (LinearLayout)view.findViewById(R.id.ll_body);
 		imageloader = new ImageLoader(base);
 		
 		getstaffList();
@@ -68,8 +70,9 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_staff_profile:
-			rl_body.removeAllViews();
-			rl_body.addView(new StuffSignUpView(base).mView);
+			//btn_staff_profile.setVisibility(View.GONE);
+			ll_body.removeAllViews();
+			ll_body.addView(new StuffSignUpView(base).mView);
 			break;
 
 		default:
@@ -81,28 +84,36 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 	private void getstaffList() {
 		Thread t = new Thread(){
 			public void run(){
-				//base.doShowLoading();
 				getAllstuffList();
-				//base.doRemoveLoading();
+				
 			}
 		};
 		t.start();
 	}
 	private void getAllstuffList() {
 		try {
-			JSONObject obj = new JSONObject(Utility.readXMLinString("stuff.txt", base));
-			if(obj != null){
-				System.out.println("!--reach here"+obj);
-				JSONObject jobj = obj.getJSONObject("stuffArray");
-				JSONArray arr1 = jobj.getJSONArray("doctorArray");
-				for(int i = 0;i<arr1.length();i++){
-					JSONObject ob = arr1.getJSONObject(i);
-					docList.add(new DoctorBean(ob.getString("doc_name"),
-							ob.getString("doc_specialization"),
-							ob.getString("doc_degree")));
+			base.doShowLoading();
+			//JSONObject obj = new JSONObject(Utility.readXMLinString("stuff.txt", base));
+			String response = HttpClient.SendHttpPost(Constants.FETCH_ALL_DOCTOR, "");
+			if(response != null){
+				JSONObject jsonres = new JSONObject(response);
+				if(jsonres.getBoolean("status")){
+					JSONArray jArr = jsonres.getJSONArray("doctorArray");
+					for(int i=0; i<jArr.length(); i++){
+						JSONObject c = jArr.getJSONObject(i);
+						String id = c.getString("id");
+						String fname = c.getString("fname");
+						String lname = c.getString("lname");
+						String username = c.getString("username");
+						String specialization = c.getString("specialization");
+						String degree = c.getString("degree");
+						docList.add(new DoctorBean(id, fname, lname, username, specialization, degree));
+						
+					}
 				}
 				
-				JSONArray arr2 = jobj.getJSONArray("nurseArray");
+				
+				/*JSONArray arr2 = jobj.getJSONArray("nurseArray");
 				for(int i = 0;i<arr2.length();i++){
 					JSONObject ob = arr2.getJSONObject(i);
 					nurseList.add(new NurseBean(ob.getString("nurse_name"),
@@ -116,7 +127,7 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 					stuffList.add(new StuffBean(ob.getString("stuff_name"),
 							ob.getString("stuff_specialization"),
 							ob.getString("stuff_degree")));
-				}
+				}*/
 				updateUi();
 			}
 		} catch (JSONException e) {
@@ -126,6 +137,7 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 	
 
 	private void updateUi() {
+		base.doRemoveLoading();
 		base.runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
@@ -136,15 +148,15 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 					TextView tv_name = (TextView)vi.findViewById(R.id.tv_name);
 					ImageView iv_friend_image = (ImageView)vi.findViewById(R.id.iv_friend_image);
 										
-					tv_specilization.setText(docList.get(i).getDoctor_specilization());
-					tv_name.setText(docList.get(i).getDoctor_name());
+					tv_specilization.setText(docList.get(i).getSpecialization());
+					tv_name.setText(docList.get(i).getFirstName()+" "+docList.get(i).getLastName());
 					//imageloader.DisplayImage("", iv_friend_image);
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									
 					ll_doctors_container.addView(vi);
 				}
 				
-				ll_nurse_container.removeAllViews();
+				/*ll_nurse_container.removeAllViews();
 				for(int i = 0;i< nurseList.size();i++){
 					vi = LayoutInflater.from(base).inflate(R.layout.doctor_list_row, null);
 					TextView tv_specilization = (TextView)vi.findViewById(R.id.tv_specilization);
@@ -157,9 +169,9 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									
 					ll_nurse_container.addView(vi);
-				}
+				}*/
 				
-				ll_stuff_container.removeAllViews();
+				/*ll_stuff_container.removeAllViews();
 				for(int i = 0;i< stuffList.size();i++){
 					vi = LayoutInflater.from(base).inflate(R.layout.doctor_list_row, null);
 					TextView tv_specilization = (TextView)vi.findViewById(R.id.tv_specilization);
@@ -172,7 +184,7 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									
 					ll_stuff_container.addView(vi);
-				}
+				}*/
 			}
 		});
 	}

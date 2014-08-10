@@ -35,14 +35,14 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 	private RelativeLayout rl_home;
 	private Button btn_admin_login = null;
 	private AdminListener listenr;
-	private boolean flag = false;
+	private String loginType = "";
 	
-	String imagepath,fname,lname,address,dob,email,contact,conf_contact;
+	String imagepath,fname,lname,address,dob,email,contact,conf_contact,degree,specilization;
 	
-	public HomeFragment(BaseScreen b,AdminListener l, boolean flag){
+	public HomeFragment(BaseScreen b,AdminListener l, String loginType){
 		listenr = l;
 		base = b;
-		this.flag = flag;
+		this.loginType = loginType;
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,8 +67,12 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		btn_doctor_login = (Button)view.findViewById(R.id.btn_doctor_login);
 		btn_doctor_login.setOnClickListener(this);
 		
-		if(flag){
-			gotosignIn();
+		if(!loginType.equalsIgnoreCase("")){
+			if(loginType.equalsIgnoreCase("user")){
+				gotosignIn();
+			}else if(loginType.equalsIgnoreCase("doctor")){
+				gotoDoctorHomeScreen();
+			}
 		}
 		return view;
 	}
@@ -87,6 +91,20 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		ll_home.setVisibility(View.VISIBLE);
 		rl_home.setVisibility(View.GONE);
 		ll_home.addView(new UserProfile(base,this,this, imagepath, fname, lname,email, address, dob, contact, conf_contact).mView);
+	}
+	
+	public void gotoDoctorHomeScreen(){
+		this.imagepath = base.app.getDoctorinfo().image;
+		this.fname = base.app.getDoctorinfo().first_name;
+		this.lname = base.app.getDoctorinfo().last_name;
+		this.email = base.app.getDoctorinfo().email;
+		this.degree = base.app.getDoctorinfo().degree;
+		this.specilization = base.app.getDoctorinfo().specilization;
+		
+		ll_home.removeAllViews();
+		ll_home.setVisibility(View.VISIBLE);
+		rl_home.setVisibility(View.GONE);
+		ll_home.addView(new DoctorHome(base,imagepath, fname, lname,email, degree, specilization).mView);
 	}
 
 	@Override
@@ -141,7 +159,7 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 			ll_home.removeAllViews();
 			ll_home.setVisibility(View.VISIBLE);
 			rl_home.setVisibility(View.GONE);
-			ll_home.addView(new DoctorSignInView(base).mView);
+			ll_home.addView(new DoctorSignInView(base,this).mView);
 			break;
 		}
 	}
@@ -222,16 +240,24 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		ll_home.removeAllViews();
 		ll_home.setVisibility(View.VISIBLE);
 		rl_home.setVisibility(View.GONE);
-		ll_home.addView(new DoctorHome(base,imagepath, fname, lname,email, address, dob, contact, conf_contact).mView);
+		ll_home.addView(new DoctorHome(base,imagepath, fname, lname,email, degree, specilization).mView);
 	}
 
 	@Override
-	public void onCallToDoctorProfile(String imagepath, String fname,
-			String lname, String email, String address, String dob,
-			String contact, String conf_contact) {
+	public void onCallToDoctorProfile(String user_id, String first_name,
+			String last_name, String email, String image, String degree,String specilization) {
+		
+		this.imagepath = image;
+		this.fname = first_name;
+		this.lname = last_name;
+		this.email = email;
+		this.degree = degree;
+		this.specilization = specilization;
+		
 		ll_home.removeAllViews();
 		ll_home.setVisibility(View.VISIBLE);
 		rl_home.setVisibility(View.GONE);
-		ll_home.addView(new DoctorHome(base,imagepath, fname, lname,email, address, dob, contact, conf_contact).mView);
+		ll_home.addView(new DoctorHome(base,imagepath, fname, lname,email, degree, specilization).mView);
 	}
+	
 }

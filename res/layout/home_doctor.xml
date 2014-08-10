@@ -118,14 +118,14 @@
 			<RelativeLayout
                 android:id="@+id/rl_popup"
                 android:layout_width="130dp"
-                android:layout_height="120dp"
+                android:layout_height="80dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="50dp"
                 android:background="@color/ash"
                 android:gravity="center|top" >
 
-                <TextView
+                <!-- <TextView
                     android:id="@+id/tv_edit_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,13 +134,12 @@
                     android:layout_marginTop="14dp"
                     android:text="Edit Profile"
                     android:textColor="@color/black"
-                    android:textSize="15sp" />
+                    android:textSize="15sp" /> -->
 
                 <TextView
                     android:id="@+id/tv_leave_req"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_edit_profile"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="14dp"
                     android:text="Leave Request"
@@ -148,10 +147,10 @@
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/tv_repeat_prescription"
+                    android:id="@+id/tv_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_appointment"
+                    android:layout_below="@+id/tv_leave_req"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="14dp"
                     android:gravity="center"

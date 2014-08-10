@@ -13,11 +13,13 @@ import android.widget.Toast;
 import com.gpcare.model.AdminProfile.OnAdminListeber;
 import com.gpcare.model.admin.EditAdminProfileView.onUpdateAdminProfileListener;
 import com.gpcare.model.admin.SignInView.OnAdminSignInListener;
+import com.gpcare.model.doctor.DoctorHome.DocLogoutListener;
 import com.gpcare.settings.AdminInfo;
 import com.gpcare.settings.Appsettings;
+import com.gpcare.settings.DoctorInfo;
 import com.gpcare.settings.UserInfo;
 
-public class BaseScreen extends FragmentActivity implements OnClickListener,OnAdminSignInListener,OnAdminListeber,onUpdateAdminProfileListener{
+public class BaseScreen extends FragmentActivity implements OnClickListener,OnAdminSignInListener,OnAdminListeber,onUpdateAdminProfileListener,DocLogoutListener{
 
 	public Appsettings app = null;
 	public ProgressDialog dialog;
@@ -30,6 +32,7 @@ public class BaseScreen extends FragmentActivity implements OnClickListener,OnAd
 			app.init = true;
 			app.setUserinfo(new UserInfo(this));
 			app.setAdmininfo(new AdminInfo(this));
+			app.setDoctorinfo(new DoctorInfo(this));
 		}
 	}
 	
@@ -80,6 +83,7 @@ public class BaseScreen extends FragmentActivity implements OnClickListener,OnAd
 		Toast.makeText(getApplicationContext(), "Hello", 3000).show();
 	}
 	public void onLogout() {}
-	public void onUpdateAdminProfile() {}
+	public void onUpdateAdminProfile() {}	
+	public void onDocLogout() {	}
 
 }

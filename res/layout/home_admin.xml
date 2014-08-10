@@ -1,7 +1,7 @@
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" > -->
 
     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -142,6 +142,7 @@
                     android:duplicateParentState="true"
                     android:gravity="left|center"
                     android:orientation="vertical"
+                    android:background="#333333"
                     android:paddingLeft="10dp"
                     android:text="Profile"
                     android:textColor="#FFFFFF"
@@ -152,14 +153,14 @@
                 android:id="@+id/ll_register_patient"
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
-                android:background="#333333"
+                android:background="#000000"
                 android:gravity="left|center"
                 android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="#333333"
+                    android:background="#000000"
                     android:duplicateParentState="true"
                     android:gravity="left|center"
                     android:orientation="vertical"
@@ -169,31 +170,14 @@
                     android:textSize="17sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_update_patients_profile"
-                android:layout_width="fill_parent"
-                android:layout_height="55dp"
-                android:gravity="left|center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:duplicateParentState="true"
-                    android:gravity="left|center"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:text="Patient&apos;s Profile"
-                    android:textColor="#FFFFFF"
-                    android:textSize="17sp" />
-            </LinearLayout>
+    
 
             <LinearLayout
                 android:id="@+id/ll_staff_profile"
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
-                android:background="#333333"
                 android:gravity="left|center"
+                 android:background="#000000"
                 android:orientation="vertical" >
 
                 <TextView
@@ -224,6 +208,7 @@
                     android:gravity="left|center"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
+                      android:background="#000000"
                     android:text="Doctor Availability"
                     android:textColor="#FFFFFF"
                     android:textSize="17sp" />
@@ -264,6 +249,7 @@
                     android:gravity="left|center"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
+                      android:background="#000000"
                     android:text="Repeat Prescription"
                     android:textColor="#FFFFFF"
                     android:textSize="17sp" />
@@ -273,14 +259,14 @@
                 android:id="@+id/ll_query"
                 android:layout_width="fill_parent"
                 android:layout_height="55dp"
-                android:background="#333333"
+                android:background="#000000"
                 android:gravity="left|center"
                 android:orientation="vertical" >
 
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="#333333"
+                     android:background="#333333"
                     android:duplicateParentState="true"
                     android:gravity="left|center"
                     android:orientation="vertical"
@@ -290,26 +276,6 @@
                     android:textSize="17sp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_write_back_to_user"
-                android:layout_width="fill_parent"
-                android:layout_height="55dp"
-                android:background="#333333"
-                android:gravity="left|center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#333333"
-                    android:duplicateParentState="true"
-                    android:gravity="left|center"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:text="Write back to user"
-                    android:textColor="#FFFFFF"
-                    android:textSize="17sp" />
-            </LinearLayout>
         </LinearLayout>
     </RelativeLayout>
     <!-- Slider end -->

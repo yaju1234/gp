@@ -24,7 +24,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 	private DrawerLayout mDrawerLayout;
 	private RelativeLayout list_slidermenu = null;
 	private ImageView iv_slider = null,iv_slider_slide = null;
-	private boolean flag = false;
+	private String loginType = "";
 	private LinearLayout ll_home = null,ll_staffs = null,ll_doctor_availability = null,ll_appointment = null,ll_information_zone = null,ll_contact_us = null;
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -55,13 +55,25 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 			displayView(0);
 		}
 		
+		System.out.println("!--reach here999"+app.getUserinfo().session);
+		
 		if(app.getUserinfo().session){
-			System.out.println("!--reach here");
-			flag = true;
-			displayView(0);
-		}else{
-			flag = false;
-			displayView(0);
+			if(app.getUserinfo().session){
+				loginType = "user";
+				displayView(0);
+			}else{
+				loginType = "";
+				displayView(0);
+			}
+		}else if(app.getDoctorinfo().session){
+			if(app.getDoctorinfo().session){
+				System.out.println("!--reach here5555"+app.getDoctorinfo().session);
+				loginType = "doctor";
+				displayView(0);
+			}else{
+				loginType = "";
+				displayView(0);
+			}
 		}
 	}	
 
@@ -100,7 +112,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new HomeFragment(this,this,flag);
+			fragment = new HomeFragment(this,this,loginType);
 			break;
 		case 1:
 			fragment = new StaffFragment(this);
@@ -138,7 +150,12 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 
 	@Override
 	public void onLogout() {
-		flag = false;
+		loginType = "";
+		displayView(0);
+	}
+	public void onDocLogout() {
+		loginType = "";
+		app.getDoctorinfo().setSession(false);
 		displayView(0);
 	}
 }

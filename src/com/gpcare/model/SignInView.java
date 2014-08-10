@@ -151,10 +151,6 @@ public class SignInView implements OnClickListener{
 			public void run() {
 				if(type == 1 ){	
 					listener.onUserSignIn(fname,lname,email,image,dob,address,contact,emg_contact);
-				}else if(type == 2){
-					listener.onCallToDoctorProfile(fname,lname,email,image,dob,address,contact,emg_contact);
-				}else if(type == 3){
-					listener.onAdminLogin(fname, lname, email);
 				}
 			}
 		});

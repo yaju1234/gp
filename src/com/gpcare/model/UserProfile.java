@@ -30,7 +30,6 @@ public class UserProfile implements OnClickListener {
 	private UserProfileListener listener;
 	private HomeFragment fragment;
 	
-	
 	public UserProfile(BaseScreen b,HomeFragment fragment,UserProfileListener listener,String imagepath,String fname,String lname, String email,String address,String dob,String contact,String conf_contact){
 		this.base = b;
 		this.listener = listener;

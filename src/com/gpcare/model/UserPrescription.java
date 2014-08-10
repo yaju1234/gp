@@ -108,7 +108,7 @@ public class UserPrescription implements OnClickListener{
 			ob.put("user_id", base.app.getUserinfo().user_id);
 			String response = HttpClient.SendHttpPost(Constants.FETCH_PRESCRIPTION, ob.toString());
 			if(response != null){
-				
+				System.out.println("##--reach "+response);
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();

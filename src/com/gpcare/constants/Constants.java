@@ -26,13 +26,16 @@ public class Constants {
 	public static String USER_REGISTER =   "http://devlpconsole.com/hospital/userRegistration.php";
 	public static String EDIT_ADMIN_PROFILE  = "http://devlpconsole.com/hospital/adminProfileUpdate.php";
 	public static String STUFF_REGISTER =   "http://devlpconsole.com/hospital/stuffRegistration.php";
+	public static String DOCTOR_REGISTER =   "http://devlpconsole.com/hospital/doctorRegistration.php";
 	public static String USER_LIST =   "http://devlpconsole.com/hospital/userList.php";
 	
 	public static String USER_PRESCRIPTION = "http://devlpconsole.com/hospital/addPrescription.php";
 	public static String FETCH_PRESCRIPTION = "http://devlpconsole.com/hospital/getUserPrescription.php";
 	
 	public static String ADD_MESSAGE = "http://devlpconsole.com/hospital/addMessage.php";
-	
+	public static String FETCH_ALL_DOCTOR = "http://devlpconsole.com/hospital/doctorfetchall.php";
+	public static String FETCH_BOOKED_SLOT = "http://devlpconsole.com/hospital/slotbookfetch.php";
+	public static String BOOKE_SLOT_REQ = "http://devlpconsole.com/hospital/slotbook.php";
 	public enum values{
 		USRINFO,
 		ADMININFO,
@@ -49,7 +52,9 @@ public class Constants {
 		DOB,
 		CONTACT,
 		EMRG_CONTACT,
-		SESSION
+		SESSION,
+		DEGREE,
+		SPECILIZATION
 		
 		}
 }

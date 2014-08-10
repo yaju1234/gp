@@ -7,6 +7,7 @@ public class Appsettings extends Application{
 	
 	private UserInfo userinfo;	
 	private AdminInfo admininfo;
+	public DoctorInfo doctorinfo;
 	public boolean init = false;
 
 	public UserInfo getUserinfo() {
@@ -23,5 +24,13 @@ public class Appsettings extends Application{
 
 	public void setAdmininfo(AdminInfo admininfo) {
 		this.admininfo = admininfo;
+	}
+
+	public DoctorInfo getDoctorinfo() {
+		return doctorinfo;
+	}
+
+	public void setDoctorinfo(DoctorInfo doctorinfo) {
+		this.doctorinfo = doctorinfo;
 	}
 }

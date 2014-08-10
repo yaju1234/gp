@@ -66,7 +66,7 @@ public class StaffFragment extends Fragment{
 		};
 		t.start();
 	}
-	private void getAllstuffList() {
+	private void getAllstuffList() {/*
 		try {
 			JSONObject obj = new JSONObject(Utility.readXMLinString("stuff.txt", base));
 			if(obj != null){
@@ -100,7 +100,7 @@ public class StaffFragment extends Fragment{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-	}
+	*/}
 
 	private void updateUi() {
 		base.runOnUiThread(new Runnable() {
@@ -113,8 +113,8 @@ public class StaffFragment extends Fragment{
 					TextView tv_name = (TextView)vi.findViewById(R.id.tv_name);
 					ImageView iv_friend_image = (ImageView)vi.findViewById(R.id.iv_friend_image);
 										
-					tv_specilization.setText(docList.get(i).getDoctor_specilization());
-					tv_name.setText(docList.get(i).getDoctor_name());
+					//tv_specilization.setText(docList.get(i).getDoctor_specilization());
+					//tv_name.setText(docList.get(i).getDoctor_name());
 					//imageloader.DisplayImage("", iv_friend_image);
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									

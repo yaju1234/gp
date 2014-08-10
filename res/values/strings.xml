@@ -7,6 +7,7 @@
     <string name="footer_text">©2014 GP Care Online. All Right Reserved. Authors: Mohammad Salim Uddin &amp; Dr. Ioannis Doumanis</string>
 	<string name="select_date">Select Date</string>
 	<string name="select_doc">Select Doctor</string>
+	<string name="slot_text">Hours\Slot</string>
 	
 	<string name="appoinment_text">Thanks for your great move and Welcome to our Appointment Service Panel. Here you can book, amend or cancel your pre-booked appointments. All you need is to Sign In to the panel for security reasons. \n \n Please provide the following credential to login.</string>
 	<string name="header_text"><u>Combined Pill may raise breast cancer risk</u></string>

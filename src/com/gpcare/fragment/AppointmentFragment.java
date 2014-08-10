@@ -92,9 +92,9 @@ public class AppointmentFragment extends Fragment implements OnClickListener, Si
 	}
 
 	@Override
-	public void onCallToDoctorProfile(String imagepath, String fname,
-			String lname, String email, String address, String dob,
-			String contact, String conf_contact) {
+	public void onCallToDoctorProfile(String user_id, String first_name,
+			String last_name, String email, String image, String degree,
+			String specilization) {
 		// TODO Auto-generated method stub
 		
 	}
