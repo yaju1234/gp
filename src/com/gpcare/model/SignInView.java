@@ -107,7 +107,7 @@ public class SignInView implements OnClickListener{
 		
 		JSONObject request = new JSONObject();
 		try {
-			request.put("username", username);
+			request.put("reg_no", username);
 			request.put("password", password);
 			request.put("type", type);
 			

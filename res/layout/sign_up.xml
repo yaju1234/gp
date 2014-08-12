@@ -35,7 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="GP Reg. No."
-                    android:inputType="number"
+                    android:inputType="text"
                     android:singleLine="true"
                     android:textColor="@color/black"                    
                     android:textSize="15sp" />

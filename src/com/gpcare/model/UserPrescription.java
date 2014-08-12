@@ -1,8 +1,12 @@
 package com.gpcare.model;
 
+import java.util.ArrayList;
+
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -11,11 +15,13 @@ import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.gpcare.adapter.PrescriptionAdapter;
+import com.gpcare.bean.PrescriptionBean;
 import com.gpcare.constants.Constants;
 import com.gpcare.fragment.HomeFragment;
-import com.gpcare.model.UserEditProfile.UserProfileBackListener;
 import com.gpcare.network.HttpClient;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
@@ -34,6 +40,12 @@ public class UserPrescription implements OnClickListener{
 	public Button btn_submit,btn_done;
 	String gp_reg_no,medicine_name,qty;
 	private HomeFragment fragment;
+	
+	private View mview;
+	
+	private PrescriptionAdapter adapter;
+	
+	private ArrayList<PrescriptionBean> list = new ArrayList<PrescriptionBean>();
 	
 	private UserPrescritionBackListener listener;
 	
@@ -68,8 +80,6 @@ public class UserPrescription implements OnClickListener{
 				}
 			}
 		});
-		
-		
 		
 		cb_gpcare = (CheckBox)mviView.findViewById(R.id.cb_gp_care);
 		
@@ -108,14 +118,47 @@ public class UserPrescription implements OnClickListener{
 			ob.put("user_id", base.app.getUserinfo().user_id);
 			String response = HttpClient.SendHttpPost(Constants.FETCH_PRESCRIPTION, ob.toString());
 			if(response != null){
-				System.out.println("##--reach "+response);
+				list.clear();
+				JSONObject obj = new JSONObject(response);
+				JSONArray arr = obj.getJSONArray("prescription_list");
+				for(int i = 0;i<arr.length();i++){
+					JSONObject object = arr.getJSONObject(i);
+					list.add(new PrescriptionBean(object.getString("item_name"),
+							object.getString("qty_ordered"),
+							object.getString("date_ordered"), 
+							object.getString("delivery_date")));
+				}
+				populateList();
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
+	private void populateList() {
+		base.runOnUiThread(new Runnable() {			
+			@Override
+			public void run() {
+				ll_add_view.removeAllViews();
+				for(int j = 0;j<list.size();j++){
+					mview = LayoutInflater.from(base).inflate(R.layout.repeat_prescription_row, null);
+					TextView tv_item = (TextView)mview.findViewById(R.id.tv_item);
+					TextView tv_qty = (TextView)mview.findViewById(R.id.tv_qty);	
+					TextView tv_order_date = (TextView)mview.findViewById(R.id.tv_order_date);
+					TextView tv_delevary_date = (TextView)mview.findViewById(R.id.tv_delevary_date);	
+					
+					tv_item.setText(list.get(j).getItem_ordered());
+					tv_qty.setText(list.get(j).getQuantity_ordered());
+				
+					tv_order_date.setText(list.get(j).getDate_ordered());
+					tv_delevary_date.setText(list.get(j).getEstimate_delivery_date());
+					
+					ll_add_view.addView(mview);
+				}
+			}
+		});
+	}
+
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
@@ -204,6 +247,7 @@ public class UserPrescription implements OnClickListener{
 			@Override
 			public void run() {
 				Toast.makeText(base, "Your profile has successfully Updated ", Toast.LENGTH_SHORT).show();
+				getorderedPrescription();
 			}
 		});
 		

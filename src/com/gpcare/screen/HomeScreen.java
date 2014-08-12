@@ -158,4 +158,8 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		app.getDoctorinfo().setSession(false);
 		displayView(0);
 	}
+	@Override
+	public void loadHomeFragment() {
+		displayView(0);
+	}
 }

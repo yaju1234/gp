@@ -21,15 +21,6 @@
             android:padding="3dp" >
 
             <TextView
-                android:id="@+id/tv_heading"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/header_text"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <TextView
                 android:id="@+id/tv_post_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -39,7 +30,7 @@
                 android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/tv_post_text"
+                android:id="@+id/tv_govt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"

@@ -64,10 +64,13 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 			cal.add(Calendar.DATE, +i);
 			list_date.add(new SimpleDateFormat( "dd-MM-yyyy").format(cal.getTime()));
 		}
-		getAllstuffList();
-		for(int i=0; i<docList.size(); i++){
-			list_dr.add(docList.get(i).getFirstName()+" "+docList.get(i).getLastName());
-		}
+		
+		Thread t = new Thread(){
+			public void run(){
+				getAllstuffList();
+			}
+		};
+		t.start();
 	}
 	
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -90,6 +93,8 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 				android.R.layout.simple_spinner_item, list_date);
 			dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			spinner_date.setAdapter(dataAdapter);
+			spinner_date.setSelected(true);
+			spinner_date.setSelection(0);
 			spinner_date.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 				@Override
@@ -98,6 +103,7 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 					
 					//spinner_date.setSelection(arg2);
 					pos_date = arg2;
+					spinner_date.setSelection(arg2);
 				}
 
 				@Override
@@ -111,12 +117,14 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 					android.R.layout.simple_spinner_item, list_dr);
 			dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 				spinner_doc.setAdapter(dataAdapter1);
+				spinner_doc.setSelected(true);
+				spinner_doc.setSelection(0);
 				spinner_doc.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 					@Override
 					public void onItemSelected(AdapterView<?> arg0, View arg1,
 							int arg2, long arg3) {
-						
+						spinner_doc.setSelection(arg2);
 						pos_doc = arg2;
 					}
 
@@ -229,7 +237,16 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 		}
 	}
 
-	private void updateDocUi() {		
-		base.doRemoveLoading();
+	private void updateDocUi() {	
+		base.runOnUiThread(new Runnable() {			
+			@Override
+			public void run() {
+				base.doRemoveLoading();
+				for(int i=0; i<docList.size(); i++){
+					list_dr.add(docList.get(i).getFirstName()+" "+docList.get(i).getLastName());
+				}
+			}
+		});
+		
 	}
 }

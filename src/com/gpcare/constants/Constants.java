@@ -36,6 +36,16 @@ public class Constants {
 	public static String FETCH_ALL_DOCTOR = "http://devlpconsole.com/hospital/doctorfetchall.php";
 	public static String FETCH_BOOKED_SLOT = "http://devlpconsole.com/hospital/slotbookfetch.php";
 	public static String BOOKE_SLOT_REQ = "http://devlpconsole.com/hospital/slotbook.php";
+	
+	public static String SLOTLIST = "http://devlpconsole.com/hospital/staffList.php";
+	public static String ALLQUERYLIST = "http://devlpconsole.com/hospital/getMessage.php";
+	
+	public static String ANSER_TO_QUERY = "http://devlpconsole.com/hospital/updateMessage.php";
+	
+	public static String UPDATE_TONEWS = "http://devlpconsole.com/hospital/updateNewsCommunity.php";
+	
+	public static String GETUPDATE_TONEWS = "http://devlpconsole.com/hospital/getNewsCommunity.php";
+	
 	public enum values{
 		USRINFO,
 		ADMININFO,

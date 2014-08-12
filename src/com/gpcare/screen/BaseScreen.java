@@ -10,6 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.gpcare.adapter.SlotAdapter.setHomeFragmentListener;
 import com.gpcare.model.AdminProfile.OnAdminListeber;
 import com.gpcare.model.admin.EditAdminProfileView.onUpdateAdminProfileListener;
 import com.gpcare.model.admin.SignInView.OnAdminSignInListener;
@@ -19,7 +20,7 @@ import com.gpcare.settings.Appsettings;
 import com.gpcare.settings.DoctorInfo;
 import com.gpcare.settings.UserInfo;
 
-public class BaseScreen extends FragmentActivity implements OnClickListener,OnAdminSignInListener,OnAdminListeber,onUpdateAdminProfileListener,DocLogoutListener{
+public class BaseScreen extends FragmentActivity implements OnClickListener,OnAdminSignInListener,OnAdminListeber,onUpdateAdminProfileListener,DocLogoutListener,setHomeFragmentListener{
 
 	public Appsettings app = null;
 	public ProgressDialog dialog;
@@ -86,4 +87,6 @@ public class BaseScreen extends FragmentActivity implements OnClickListener,OnAd
 	public void onUpdateAdminProfile() {}	
 	public void onDocLogout() {	}
 
+	@Override
+	public void loadHomeFragment() {}
 }

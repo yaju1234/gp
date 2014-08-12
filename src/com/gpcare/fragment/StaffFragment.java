@@ -15,19 +15,19 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.gpcare.bean.DoctorBean;
 import com.gpcare.bean.NurseBean;
 import com.gpcare.bean.StuffBean;
+import com.gpcare.bean.StuffDoctorBean;
+import com.gpcare.constants.Constants;
+import com.gpcare.network.HttpClient;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
 import com.gpcare.settings.ImageLoader;
-import com.gpcare.settings.Utility;
 
 public class StaffFragment extends Fragment{
 	public BaseScreen base;
-	public ArrayList<DoctorBean> docList = new ArrayList<DoctorBean>();
+	public ArrayList<StuffDoctorBean> docList = new ArrayList<StuffDoctorBean>();
 	public ArrayList<NurseBean> nurseList = new ArrayList<NurseBean>();
 	public ArrayList<StuffBean> stuffList = new ArrayList<StuffBean>();
 	
@@ -59,23 +59,26 @@ public class StaffFragment extends Fragment{
 	private void getstaffList() {
 		Thread t = new Thread(){
 			public void run(){
-				//base.doShowLoading();
+				base.doShowLoading();
 				getAllstuffList();
-				//base.doRemoveLoading();
+				base.doRemoveLoading();
 			}
 		};
 		t.start();
 	}
-	private void getAllstuffList() {/*
+	private void getAllstuffList() {
 		try {
-			JSONObject obj = new JSONObject(Utility.readXMLinString("stuff.txt", base));
-			if(obj != null){
-				System.out.println("!--reach here"+obj);
-				JSONObject jobj = obj.getJSONObject("stuffArray");
+			
+			JSONObject obj = new JSONObject();
+			obj.put("user_id", "23");
+			String response = HttpClient.SendHttpPost(Constants.SLOTLIST, obj.toString());
+			if(response != null){
+				JSONObject objc = new JSONObject(response);
+				JSONObject jobj = objc.getJSONObject("staffArray");
 				JSONArray arr1 = jobj.getJSONArray("doctorArray");
 				for(int i = 0;i<arr1.length();i++){
 					JSONObject ob = arr1.getJSONObject(i);
-					docList.add(new DoctorBean(ob.getString("doc_name"),
+					docList.add(new StuffDoctorBean(ob.getString("id"),ob.getString("doc_name"),
 							ob.getString("doc_specialization"),
 							ob.getString("doc_degree")));
 				}
@@ -100,7 +103,7 @@ public class StaffFragment extends Fragment{
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-	*/}
+	}
 
 	private void updateUi() {
 		base.runOnUiThread(new Runnable() {
@@ -113,9 +116,9 @@ public class StaffFragment extends Fragment{
 					TextView tv_name = (TextView)vi.findViewById(R.id.tv_name);
 					ImageView iv_friend_image = (ImageView)vi.findViewById(R.id.iv_friend_image);
 										
-					//tv_specilization.setText(docList.get(i).getDoctor_specilization());
-					//tv_name.setText(docList.get(i).getDoctor_name());
-					//imageloader.DisplayImage("", iv_friend_image);
+					tv_specilization.setText(docList.get(i).getSpecialization());
+					tv_name.setText(docList.get(i).getName());
+					imageloader.DisplayImage("", iv_friend_image);
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									
 					ll_doctors_container.addView(vi);
