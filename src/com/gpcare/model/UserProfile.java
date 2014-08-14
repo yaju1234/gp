@@ -95,7 +95,10 @@ public class UserProfile implements OnClickListener {
 			rl_cointainer.addView(new UserEditProfile(base,listener,fragment, imagepath, fname, lname, email, address, dob, contact, conf_contact).mView);			
 			break;
 		case R.id.tv_appointment:
-			
+			rl_popup.setVisibility(View.GONE);
+			isVisiable = false;
+			rl_cointainer.removeAllViews();
+			rl_cointainer.addView(new UserBookedSlot(base,fragment).mviView);			
 			break;
 		case R.id.tv_repeat_prescription:
 			rl_popup.setVisibility(View.GONE);

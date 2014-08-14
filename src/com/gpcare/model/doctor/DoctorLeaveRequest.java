@@ -29,8 +29,8 @@ public class DoctorLeaveRequest implements OnClickListener{
 		this.doctorHome = doctorHome;
 		mView = View.inflate(base, R.layout.doctor_leave_req, null);
 		
-		ed_date = (EditText)mView.findViewById(R.id.et_name);
-		ed_message = (EditText)mView.findViewById(R.id.et_email);
+		ed_date = (EditText)mView.findViewById(R.id.ed_date);
+		ed_message = (EditText)mView.findViewById(R.id.ed_message);
 		
 		btn_send = (Button)mView.findViewById(R.id.btn_send);
 		btn_send.setOnClickListener(this);

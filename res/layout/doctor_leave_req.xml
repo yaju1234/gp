@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/white"
-    android:gravity="left|top"
+    android:gravity="center|top"
     android:orientation="vertical" >
 
     <TextView
@@ -20,8 +20,8 @@
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:padding="2dp"
-        android:gravity="left|top"
-        android:hint="Enter your date"
+        android:gravity="left|center"
+        android:hint="Enter your date in dd/mm/yy format"
         android:textColor="@color/black"
         android:textSize="15sp"
         android:layout_marginTop="3dp"

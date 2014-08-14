@@ -1,4 +1,4 @@
-package com.gpcare.fragment;
+package com.gpcare.model.admin;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -17,70 +17,50 @@ import com.gpcare.network.HttpClient;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
 
-import android.R.integer;
-import android.annotation.SuppressLint;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
-@SuppressLint("ValidFragment") 
-public class DoctorFragment extends Fragment implements OnClickListener{
-	public BaseScreen base;
-	private Spinner spinner_date,spinner_doc;
+public class DoctorAvalibility implements OnClickListener{
+	
+	public View view = null;
+	private BaseScreen base;
+	private Spinner spinner_date;
 	private Calendar cal;
 	private List<String> list_date = new ArrayList<String>();
-	private List<String> list_dr = new ArrayList<String>();
 	
 	private ArrayList<SlotBean> slotarray = new ArrayList<SlotBean>();
 	
-	private LinearLayout ll_cointainer;
 	private Button btn_load;
 	public String[] myStringArray ;
-	public ArrayList<DoctorBean> docList = new ArrayList<DoctorBean>();
 	
 	private SlotAdapter adapter;
-	private int pos_doc;
 	private int pos_date;
 	
 	private GridView grid;
 	
 	private LinearLayout ll_container;
+	private String id;
 	
-	@SuppressLint("SimpleDateFormat")
-	public DoctorFragment(BaseScreen b){
-		base = b;
+	
+	public DoctorAvalibility(BaseScreen b, String id){
+		base  = b;
+		this.id = id;
+		
 		cal = Calendar.getInstance();
 		for(int i= 0; i<30; i++){
 			cal.add(Calendar.DATE, +i);
 			list_date.add(new SimpleDateFormat( "dd-MM-yyyy").format(cal.getTime()));
 		}
-		
-		Thread t = new Thread(){
-			public void run(){
-				getAllstuffList();
-			}
-		};
-		t.start();
-	}
-	
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		
-		View view = inflater.inflate(R.layout.fragment_doc_availabilty, container, false);
+		view = View.inflate(base, R.layout.update_fragment_doc_availabilty_list, null);
 		spinner_date = (Spinner)view.findViewById(R.id.spinner_date);
-		spinner_doc = (Spinner)view.findViewById(R.id.spinner_doctor);
-		ll_cointainer = (LinearLayout)view.findViewById(R.id.ll_container);
 		
 		btn_load = (Button)view.findViewById(R.id.btn_load);
 		btn_load.setOnClickListener(this);
@@ -110,34 +90,12 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 				@Override
 				public void onNothingSelected(AdapterView<?> arg0) {
 					
+					
 				}
 			});
-			
-			ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(base,
-					android.R.layout.simple_spinner_item, list_dr);
-			dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-				spinner_doc.setAdapter(dataAdapter1);
-				spinner_doc.setSelected(true);
-				spinner_doc.setSelection(0);
-				spinner_doc.setOnItemSelectedListener(new OnItemSelectedListener() {
-
-					@Override
-					public void onItemSelected(AdapterView<?> arg0, View arg1,
-							int arg2, long arg3) {
-						spinner_doc.setSelection(arg2);
-						pos_doc = arg2;
-						Toast.makeText(base, "hell", 3000).show();
-						Toast.makeText(base, ""+pos_doc, 3000).show();
-					}
-
-					@Override
-					public void onNothingSelected(AdapterView<?> arg0) {
-						Toast.makeText(base, "hellooo", 3000).show();
-						
-					}
-				});
-		return view;
+		
 	}
+
 
 	@Override
 	public void onClick(View v) {
@@ -147,7 +105,7 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 			break;
 		}
 	}
-
+	
 	private void getBookStatusArray() {
 		Thread t = new Thread(){
 			public void run(){
@@ -164,7 +122,7 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 		try {
 			JSONObject ob = new JSONObject();
 			ob.put("date", list_date.get(pos_date));
-			ob.put("doc_id", docList.get(pos_doc).getId());
+			ob.put("doc_id",id );
 			String response = HttpClient.SendHttpPost(Constants.FETCH_BOOKED_SLOT, ob.toString());
 			
 			if(response != null){
@@ -203,52 +161,12 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 			
 			@Override
 			public void run() {
-				adapter = new SlotAdapter(base, R.layout.grid_row, slotarray,list_date.get(pos_date),docList.get(pos_doc).getId());
+				adapter = new SlotAdapter(base, R.layout.grid_row, slotarray,list_date.get(pos_date),id);
 				grid.setAdapter(adapter);
 				ll_container.setVisibility(View.VISIBLE);
 			}
 		});
 		
 	}
-	
-	private void getAllstuffList() {
-		try {
-			base.doShowLoading();
-			String response = HttpClient.SendHttpPost(Constants.FETCH_ALL_DOCTOR, "");
-			if(response != null){
-				JSONObject jsonres = new JSONObject(response);
-				if(jsonres.getBoolean("status")){
-					JSONArray jArr = jsonres.getJSONArray("doctorArray");
-					for(int i=0; i<jArr.length(); i++){
-						JSONObject c = jArr.getJSONObject(i);
-						String id = c.getString("id");
-						String fname = c.getString("fname");
-						String lname = c.getString("lname");
-						String username = c.getString("username");
-						String specialization = c.getString("specialization");
-						String degree = c.getString("degree");
-						docList.add(new DoctorBean(id, fname, lname, username, specialization, degree));
-						
-					}
-				}
-				
-				updateDocUi();
-			}
-		} catch (JSONException e) {
-			e.printStackTrace();
-		}
-	}
 
-	private void updateDocUi() {	
-		base.runOnUiThread(new Runnable() {			
-			@Override
-			public void run() {
-				base.doRemoveLoading();
-				for(int i=0; i<docList.size(); i++){
-					list_dr.add(docList.get(i).getFirstName()+" "+docList.get(i).getLastName());
-				}
-			}
-		});
-		
-	}
 }

@@ -3,6 +3,7 @@ package com.gpcare.model.doctor;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -22,9 +23,10 @@ public class DoctorHome implements OnClickListener,DoctorListener{
 	
 	public ImageLoader imageloader;
 	String imagepath,fname,lname,degree,email,contact,specilization;
-	public RelativeLayout rl_popup,rl_cointainer;
-	private TextView tv_leave_req,tv_logout,tv_user_name;
+	public RelativeLayout rl_popup;
+	private TextView tv_leave_req,tv_logout,tv_user_name,tv_appointment;
 	private boolean isVisiable = false;
+	private LinearLayout rl_cointainer;
 	private DocLogoutListener logoutlistener;
 	
 	public DoctorHome(BaseScreen b,String imagepath, String fname, String lname, String email, String degree, String specilization){
@@ -54,7 +56,7 @@ public class DoctorHome implements OnClickListener,DoctorListener{
 		iv_settings = (ImageView)mView.findViewById(R.id.iv_settings);
 		iv_settings.setOnClickListener(this);
 		
-		rl_cointainer = (RelativeLayout)mView.findViewById(R.id.rl_cointainer);
+		rl_cointainer = (LinearLayout)mView.findViewById(R.id.rl_cointainer);
 		
 		if(!imagepath.equalsIgnoreCase("")){
 			imageloader.DisplayImage("", iv_profile_image);
@@ -62,7 +64,8 @@ public class DoctorHome implements OnClickListener,DoctorListener{
 		
 		tv_user_name = (TextView)mView.findViewById(R.id.tv_user_name);
 		tv_user_name.setText(fname + " "+lname);
-		
+		tv_appointment = (TextView)mView.findViewById(R.id.tv_appointment);
+		tv_appointment.setOnClickListener(this);
 		loadProfileScreen();
 	}
 	
@@ -75,7 +78,8 @@ public class DoctorHome implements OnClickListener,DoctorListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.tv_appointment:
-			
+			rl_cointainer.removeAllViews();
+			rl_cointainer.addView(new DoctorSlotBooking(base).view);
 			break;
 		case R.id.tv_leave_req:
 			rl_popup.setVisibility(View.GONE);

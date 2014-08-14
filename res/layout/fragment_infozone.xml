@@ -31,7 +31,7 @@
 
             <TextView
                 android:id="@+id/tv_govt"
-                android:layout_width="wrap_content"
+                android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:text="@string/post_text"
@@ -41,7 +41,7 @@
 
         <TextView
             android:id="@+id/tv_gp"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@xml/block_bg"
@@ -49,15 +49,17 @@
             android:padding="3dp"
             android:text="@string/gp_update"
             android:textColor="@color/black"
+            android:minHeight="30dp"
             android:textSize="15sp" />
 
         <TextView
             android:id="@+id/tv_lc"
-            android:layout_width="wrap_content"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@xml/block_bg"
             android:padding="5dp"
+            android:minHeight="30dp"
             android:text="A voluntary blood donation programme has been scheduled on 5th September 2014 at our GP centre and this programme is incorporation with Leytonstone Youth’s Association. It is scheduled at 3pm and will last for approximately 2 and half hours."
             android:textColor="@color/black"
             android:textSize="15sp" />

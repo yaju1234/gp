@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:fillViewport="true"
     android:orientation="vertical"
-    android:padding="7dp"
+    android:padding="3dp"
     android:scrollbars="none" >
 
     <RelativeLayout
@@ -45,6 +45,7 @@
                         android:layout_gravity="bottom"
                         android:layout_marginBottom="3dp"
                         android:layout_marginRight="-9dp"
+                        android:visibility="invisible"                            
                         android:src="@drawable/camera_icon" />
 
                     <LinearLayout

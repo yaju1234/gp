@@ -17,6 +17,7 @@ import com.gpcare.model.SignInListener;
 import com.gpcare.model.SignInView;
 import com.gpcare.model.SignUpListener;
 import com.gpcare.model.SignUpView;
+import com.gpcare.model.UserBookedSlot.UserbBookedSlotBackListener;
 import com.gpcare.model.UserEditProfile;
 import com.gpcare.model.UserPrescription.UserPrescritionBackListener;
 import com.gpcare.model.UserProfile;
@@ -28,7 +29,7 @@ import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
 import com.gpcare.screen.R.id;
 
-public class HomeFragment extends Fragment implements SignUpListener,SignInListener, OnClickListener,UserProfileListener,UserEditProfile.UserProfileBackListener,UserPrescritionBackListener,DoctorProfileListener{
+public class HomeFragment extends Fragment implements SignUpListener,SignInListener, OnClickListener,UserProfileListener,UserEditProfile.UserProfileBackListener,UserPrescritionBackListener,DoctorProfileListener,UserbBookedSlotBackListener{
 	public BaseScreen base;
 	private Button btn_login,btn_register,btn_doctor_login;
 	private LinearLayout ll_home;
@@ -258,6 +259,14 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		ll_home.setVisibility(View.VISIBLE);
 		rl_home.setVisibility(View.GONE);
 		ll_home.addView(new DoctorHome(base,imagepath, fname, lname,email, degree, specilization).mView);
+	}
+
+	@Override
+	public void onBookedSlotDoneClick() {
+		ll_home.removeAllViews();
+		ll_home.setVisibility(View.VISIBLE);
+		rl_home.setVisibility(View.GONE);
+		ll_home.addView(new UserProfile(base,this,this, imagepath, fname, lname,email, address, dob, contact, conf_contact).mView);
 	}
 	
 }

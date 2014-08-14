@@ -20,8 +20,7 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-             >
+            android:paddingRight="8dp" >
 
             <RelativeLayout
                 android:id="@+id/rl_username_header"
@@ -99,33 +98,30 @@
                     android:layout_centerVertical="true"
                     android:layout_marginRight="24dp"
                     android:src="@drawable/settings_icon" />
-                
-                
             </RelativeLayout>
-            
-            
 
-            <RelativeLayout
+            <LinearLayout
                 android:id="@+id/rl_cointainer"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_below="@+id/rl_username_header"
                 android:layout_gravity="center"
+                android:orientation="vertical"
                 android:background="@color/white" >
+            </LinearLayout>
 
-                
-            </RelativeLayout>
-			<RelativeLayout
+            <RelativeLayout
                 android:id="@+id/rl_popup"
                 android:layout_width="130dp"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentTop="true"
                 android:layout_marginTop="50dp"
                 android:background="@color/ash"
                 android:gravity="center|top" >
 
-                <!-- <TextView
+                <!--
+                     <TextView
                     android:id="@+id/tv_edit_profile"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -134,7 +130,8 @@
                     android:layout_marginTop="14dp"
                     android:text="Edit Profile"
                     android:textColor="@color/black"
-                    android:textSize="15sp" /> -->
+                    android:textSize="15sp" />
+                -->
 
                 <TextView
                     android:id="@+id/tv_leave_req"
@@ -145,6 +142,7 @@
                     android:text="Leave Request"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
+               
 
                 <TextView
                     android:id="@+id/tv_logout"
@@ -157,7 +155,17 @@
                     android:text="Logout"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
-               
+                
+                 <TextView
+                    android:id="@+id/tv_appointment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="14dp"
+                    android:layout_below="@+id/tv_logout"
+                    android:text="View Slot"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
             </RelativeLayout>
         </RelativeLayout>
     </RelativeLayout>

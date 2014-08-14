@@ -45,10 +45,16 @@ public class Constants {
 	public static String UPDATE_TONEWS = "http://devlpconsole.com/hospital/updateNewsCommunity.php";
 	
 	public static String GETUPDATE_TONEWS = "http://devlpconsole.com/hospital/getNewsCommunity.php";
+	public static String GET_DOC_SLOT= "http://devlpconsole.com/hospital/getDoctorSlot.php";
+	
+	public static String GET_BOOKED_SLOT= "http://devlpconsole.com/hospital/getUserSlots.php";
+	
+	public static String UPDATE_PROBLEM_DETAILS= "http://devlpconsole.com/hospital/updateslot.php";
 	
 	public enum values{
 		USRINFO,
 		ADMININFO,
+		DOCTORINFO,
 		IS_SIGNIN,		
 		USER_SIGNIN_STATUS,		
 		IMAGE,

@@ -75,6 +75,10 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 				displayView(0);
 			}
 		}
+		
+		
+		System.out.println("##--session"+app.getUserinfo().session);
+		System.out.println("##--session"+app.getDoctorinfo().session);
 	}	
 
 	public void onClick(View v) {
