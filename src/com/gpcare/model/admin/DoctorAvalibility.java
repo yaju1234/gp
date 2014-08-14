@@ -126,6 +126,7 @@ public class DoctorAvalibility implements OnClickListener{
 			String response = HttpClient.SendHttpPost(Constants.FETCH_BOOKED_SLOT, ob.toString());
 			
 			if(response != null){
+				slotarray.clear();
 				JSONObject obj = new JSONObject(response);
 				if(obj.getBoolean("status")){
 					JSONArray arr = obj.getJSONArray("slots");

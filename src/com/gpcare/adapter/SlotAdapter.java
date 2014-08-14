@@ -91,7 +91,8 @@ public class SlotAdapter extends ArrayAdapter<SlotBean>{
 				if(!item.get(position).getStatus()){
 					System.out.println("##--session11"+activity.app.getUserinfo().session);
 					System.out.println("##--session11"+activity.app.getDoctorinfo().session);
-					if(!activity.app.getDoctorinfo().session){
+					/*if(!activity.app.getDoctorinfo().session){*/
+					if(activity.app.getUserinfo().session && (!item.get(position).getStatus())){
 						AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 				        builder.setCancelable(true);
 				        builder.setTitle("Book Your Slot");
@@ -139,6 +140,52 @@ public class SlotAdapter extends ArrayAdapter<SlotBean>{
 				        AlertDialog alert = builder.create();
 				        alert.show();
 					}
+				}else if(activity.app.getAdmininfo().session && item.get(position).getStatus()){
+
+					AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+			        builder.setCancelable(true);
+			        builder.setTitle("Delete Slot");
+			        builder.setInverseBackgroundForced(true);
+			        builder.setPositiveButton("Delete",
+			                new DialogInterface.OnClickListener() {
+			                    @Override
+			                    public void onClick(DialogInterface dialog,int which) {
+			                    	sendBookcancelRequest(position);
+			                    		/*final Dialog dialog1 = new Dialog(activity);
+			            				dialog1.requestWindowFeature(Window.FEATURE_NO_TITLE);
+			            				dialog1.getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
+			            				dialog1.setContentView(R.layout.problem_detail_dialog);
+			            				dialog1.setCancelable(true);
+			            				
+			            				final EditText ed_msg = (EditText)dialog1.findViewById(R.id.ed_answer);
+			            				Button btn_answer = (Button)dialog1.findViewById(R.id.btn_answer);
+			            				
+			            				btn_answer.setOnClickListener(new OnClickListener() {					
+			            					@Override
+			            					public void onClick(View v) {
+			            						if(ed_msg.getText().toString().trim().length()>0){
+			            							sendBookRequest(position,ed_msg.getText().toString().trim());
+			            							dialog1.cancel();
+			            						}else{
+			            							ed_msg.setError("Please enter your Problem Details");
+			            						}
+			            					}
+			            				});
+			            				dialog1.show();	*/	                    		
+			                    	
+			                    }
+			                });
+			        builder.setNegativeButton("Cancel",
+			                new DialogInterface.OnClickListener() {
+			                    @Override
+			                    public void onClick(DialogInterface dialog,int which) {
+			                        dialog.dismiss();
+			                      
+			                    }
+			                });
+			        AlertDialog alert = builder.create();
+			        alert.show();
+				
 				}	
 			}
 		});
@@ -184,6 +231,28 @@ public class SlotAdapter extends ArrayAdapter<SlotBean>{
 		};
 		t.start();		
 	}
+	private void sendBookcancelRequest(final int position) {	
+		Thread t = new Thread(){
+			public void run(){
+				try {
+					JSONObject obj = new JSONObject();
+					obj.put("docid",doctor_id);
+					obj.put("slot",""+(position+1));
+					obj.put("date",date);
+					String response = HttpClient.SendHttpPost(Constants.BOOKE_SLOT_REQ, obj.toString());
+					if(response!=null){
+						JSONObject ob = new JSONObject(response);
+						if(ob.getBoolean("status")){						
+							gotoNextScreen1(position);
+						}
+					}
+				} catch (JSONException e) {
+					e.printStackTrace();
+				}				
+			}	
+		};
+		t.start();		
+	}
 	private void gotoNextScreen(final int pos) {
 		activity.runOnUiThread(new Runnable() {
 			@Override
@@ -191,6 +260,17 @@ public class SlotAdapter extends ArrayAdapter<SlotBean>{
 				item.get(pos).setStatus(true);
 				notifyDataSetChanged();
 				Toast.makeText(activity, "You have successfully booked your appoinment", 5000).show();
+			}
+		});
+	}
+	
+	private void gotoNextScreen1(final int pos) {
+		activity.runOnUiThread(new Runnable() {
+			@Override
+			public void run() {
+				item.get(pos).setStatus(false);
+				notifyDataSetChanged();
+				Toast.makeText(activity, "You have successfully Cancled appoinment", 5000).show();
 			}
 		});
 	}

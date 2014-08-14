@@ -1,86 +1,35 @@
 package com.gpcare.adapter;
 
-import java.util.ArrayList;
-
-import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.gpcare.bean.DocSlotBean;
 import com.gpcare.screen.BaseScreen;
 import com.gpcare.screen.R;
 import com.gpcare.settings.ImageLoader;
 
-public class DocAvailAdapter extends ArrayAdapter<DocSlotBean>{
+public class DocAvailAdapter {
 	
-	private BaseScreen activity;
-	private ViewHolder mHolder;
+	private BaseScreen base;
 	public ImageLoader imageLoader;
-	public ArrayList<DocSlotBean> item = new ArrayList<DocSlotBean>();
+	public View v;
+	public TextView name;
+	public TextView date;
+	public TextView desc;
+
 	
-	public setHomeFragmentListener listener; 
+	public DocAvailAdapter(BaseScreen b, String name1, String slot1, String desc1) {
+		this.base = b;
+		v= View.inflate(base, R.layout.doc_avail_row, null);
+		name = (TextView)v.findViewById(R.id.tv_name);
+		date = (TextView)v.findViewById(R.id.tv_date);
+		desc = (TextView)v.findViewById(R.id.tv_desc);
+		name.setText(name1);
+		date.setText(fun(Integer.parseInt(slot1)));
+		desc.setText(desc1);
+	}
+
 	
-	public interface setHomeFragmentListener{
-		public void loadHomeFragment();
-	}
+
 	
-	public DocAvailAdapter(BaseScreen activity,int textViewResourceId,ArrayList<DocSlotBean> items) {
-		super(activity,textViewResourceId, items);
-		this.item = items;
-		this.activity = activity;
-		
-		listener = (setHomeFragmentListener) activity;
-	}
-
-	@Override
-	public int getCount() {
-		return item.size();
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return 0;
-	}
-
-	@Override
-	public View getView( final int position,  View convertView, ViewGroup parent) {
-		View v = convertView;
-		if (v == null) {
-			LayoutInflater vi = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = vi.inflate(R.layout.doc_avail_row, null);
-
-			mHolder = new ViewHolder();
-			v.setTag(mHolder);
-			
-			mHolder.name = (TextView)v.findViewById(R.id.tv_name);
-			mHolder.date = (TextView)v.findViewById(R.id.tv_date);
-			mHolder.desc = (TextView)v.findViewById(R.id.tv_desc);
-			
-		}
-		else {
-			mHolder =  (ViewHolder) v.getTag();
-		}			
-		
-		final DocSlotBean mVendor = item.get(position);
-		
-		if(mVendor != null){
-			
-				mHolder.name.setText(mVendor.getName());
-				mHolder.date.setText(fun(Integer.parseInt(mVendor.getTime())));
-				mHolder.desc.setText(mVendor.getDesc());
-				
-		}		
-		return v;
-	}
-
-	class ViewHolder {
-		public TextView name;
-		public TextView date;
-		public TextView desc;
-		
-	}
 	
 	public String  fun(int id){
 		String st = "";

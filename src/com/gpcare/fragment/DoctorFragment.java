@@ -113,11 +113,11 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 				}
 			});
 			
-			ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(base,
+			/*ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(base,
 					android.R.layout.simple_spinner_item, list_dr);
 			dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-				spinner_doc.setAdapter(dataAdapter1);
-				spinner_doc.setSelected(true);
+				spinner_doc.setAdapter(dataAdapter1);*/
+				/*spinner_doc.setSelected(true);
 				spinner_doc.setSelection(0);
 				spinner_doc.setOnItemSelectedListener(new OnItemSelectedListener() {
 
@@ -135,7 +135,7 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 						Toast.makeText(base, "hellooo", 3000).show();
 						
 					}
-				});
+				});*/
 		return view;
 	}
 
@@ -168,6 +168,7 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 			String response = HttpClient.SendHttpPost(Constants.FETCH_BOOKED_SLOT, ob.toString());
 			
 			if(response != null){
+				slotarray.clear();
 				JSONObject obj = new JSONObject(response);
 				if(obj.getBoolean("status")){
 					JSONArray arr = obj.getJSONArray("slots");
@@ -189,6 +190,8 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 				}else{
 					for(int m = 1;m<= 20;m++){
 						slotarray.add(new SlotBean(m, false));
+						
+						System.out.println("reach here");
 					}
 				}				
 				updateUi();
@@ -230,6 +233,7 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 						docList.add(new DoctorBean(id, fname, lname, username, specialization, degree));
 						
 					}
+					
 				}
 				
 				updateDocUi();
@@ -247,6 +251,29 @@ public class DoctorFragment extends Fragment implements OnClickListener{
 				for(int i=0; i<docList.size(); i++){
 					list_dr.add(docList.get(i).getFirstName()+" "+docList.get(i).getLastName());
 				}
+				ArrayAdapter<String> dataAdapter1 = new ArrayAdapter<String>(base,
+						android.R.layout.simple_spinner_item, list_dr);
+				dataAdapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+					spinner_doc.setAdapter(dataAdapter1);
+					spinner_doc.setSelected(true);
+					spinner_doc.setSelection(0);
+					spinner_doc.setOnItemSelectedListener(new OnItemSelectedListener() {
+
+						@Override
+						public void onItemSelected(AdapterView<?> arg0, View arg1,
+								int arg2, long arg3) {
+							spinner_doc.setSelection(arg2);
+							pos_doc = arg2;
+							//Toast.makeText(base, "hell", 3000).show();
+							//Toast.makeText(base, ""+pos_doc, 3000).show();
+						}
+
+						@Override
+						public void onNothingSelected(AdapterView<?> arg0) {
+							//Toast.makeText(base, "hellooo", 3000).show();
+							
+						}
+					});
 			}
 		});
 		

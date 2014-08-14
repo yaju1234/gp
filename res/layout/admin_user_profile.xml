@@ -45,6 +45,7 @@
                         android:layout_gravity="bottom"
                         android:layout_marginBottom="3dp"
                         android:layout_marginRight="-9dp"
+                        android:visibility="invisible"
                         android:src="@drawable/camera_icon" />
 
                     <LinearLayout

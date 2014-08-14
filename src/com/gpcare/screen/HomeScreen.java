@@ -1,5 +1,6 @@
 package com.gpcare.screen;
 
+import com.gpcare.constants.Constants;
 import com.gpcare.fragment.AppointmentFragment;
 import com.gpcare.fragment.ContactusFragment;
 import com.gpcare.fragment.DoctorFragment;
@@ -24,8 +25,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 	private DrawerLayout mDrawerLayout;
 	private RelativeLayout list_slidermenu = null;
 	private ImageView iv_slider = null,iv_slider_slide = null;
-	private String loginType = "";
-	private LinearLayout ll_home = null,ll_staffs = null,ll_doctor_availability = null,ll_appointment = null,ll_information_zone = null,ll_contact_us = null;
+	private LinearLayout ll_home = null,ll_staffs = null,ll_doctor_availability = null,/*ll_appointment = null,*/ll_information_zone = null,ll_contact_us = null;
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -37,7 +37,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		ll_home = (LinearLayout)findViewById(R.id.ll_home);
 		ll_staffs = (LinearLayout)findViewById(R.id.ll_staffs);
 		ll_doctor_availability = (LinearLayout)findViewById(R.id.ll_doctor_availability);
-		ll_appointment = (LinearLayout)findViewById(R.id.ll_appointment);
+		//ll_appointment = (LinearLayout)findViewById(R.id.ll_appointment);
 		ll_information_zone = (LinearLayout)findViewById(R.id.ll_information_zone);
 		ll_contact_us = (LinearLayout)findViewById(R.id.ll_contact_us);
 		iv_slider.setOnClickListener(this);
@@ -45,7 +45,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		ll_home.setOnClickListener(this);
 		ll_staffs.setOnClickListener(this);
 		ll_doctor_availability.setOnClickListener(this);
-		ll_appointment.setOnClickListener(this);
+		//ll_appointment.setOnClickListener(this);
 		ll_information_zone.setOnClickListener(this);
 		ll_contact_us.setOnClickListener(this);
 		mDrawerLayout.closeDrawers();
@@ -56,22 +56,23 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		}
 		
 		System.out.println("!--reach here999"+app.getUserinfo().session);
+		System.out.println("!--reach here999"+app.getDoctorinfo().session);
 		
 		if(app.getUserinfo().session){
 			if(app.getUserinfo().session){
-				loginType = "user";
+				Constants.loginType = "user";
 				displayView(0);
 			}else{
-				loginType = "";
+				Constants.loginType = "";
 				displayView(0);
 			}
 		}else if(app.getDoctorinfo().session){
 			if(app.getDoctorinfo().session){
 				System.out.println("!--reach here5555"+app.getDoctorinfo().session);
-				loginType = "doctor";
+				Constants.loginType = "doctor";
 				displayView(0);
 			}else{
-				loginType = "";
+				Constants.loginType = "";
 				displayView(0);
 			}
 		}
@@ -116,7 +117,7 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 		Fragment fragment = null;
 		switch (position) {
 		case 0:
-			fragment = new HomeFragment(this,this,loginType);
+			fragment = new HomeFragment(this,this,Constants.loginType);
 			break;
 		case 1:
 			fragment = new StaffFragment(this);
@@ -154,11 +155,11 @@ public class HomeScreen extends BaseScreen implements AdminListener,LogoutListen
 
 	@Override
 	public void onLogout() {
-		loginType = "";
+		Constants.loginType = "";
 		displayView(0);
 	}
 	public void onDocLogout() {
-		loginType = "";
+		Constants.loginType = "";
 		app.getDoctorinfo().setSession(false);
 		displayView(0);
 	}

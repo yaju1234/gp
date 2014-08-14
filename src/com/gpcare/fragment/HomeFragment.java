@@ -70,6 +70,8 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		
 		if(!loginType.equalsIgnoreCase("")){
 			if(loginType.equalsIgnoreCase("user")){
+				System.out.println("!--reach here999"+base.app.getUserinfo().session);
+				System.out.println("!--reach here999"+base.app.getDoctorinfo().session);
 				gotosignIn();
 			}else if(loginType.equalsIgnoreCase("doctor")){
 				gotoDoctorHomeScreen();
@@ -226,6 +228,10 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		ll_home.removeAllViews();
 		ll_home.setVisibility(View.VISIBLE);
 		rl_home.setVisibility(View.GONE);
+		
+		System.out.println("!--reach here999"+base.app.getUserinfo().session);
+		System.out.println("!--reach here999"+base.app.getDoctorinfo().session);
+		
 		ll_home.addView(new UserProfile(base,this,this, imagepath, fname, lname,email, address, dob, contact, conf_contact).mView);
 	}
 

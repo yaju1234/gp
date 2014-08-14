@@ -3,13 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <RelativeLayout
+     <RelativeLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-        <LinearLayout
+      <LinearLayout
             android:id="@+id/ll_header"
             android:layout_width="fill_parent"
             android:layout_height="45dp"
@@ -65,7 +65,7 @@
     </RelativeLayout>
     <!-- Slider start -->
 
-    <RelativeLayout
+    <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/list_slidermenu"
         android:layout_width="170dp"
         android:layout_height="match_parent"
@@ -118,6 +118,7 @@
                     android:gravity="left|center"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
+                     android:background="#333333"
                     android:text="HOME"
                     android:textColor="#FFFFFF"
                     android:duplicateParentState="true"
@@ -135,7 +136,7 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:background="#333333"
+                    android:background="#000000"
                     android:gravity="left|center"
                     android:orientation="vertical"
                     android:paddingLeft="10dp"
@@ -157,31 +158,11 @@
                     android:layout_height="fill_parent"
                     android:gravity="left|center"
                     android:orientation="vertical"
+                     android:background="#333333"
                     android:paddingLeft="10dp"
-                    android:text="Doctor’s Availability"
+                    android:text="@string/book_appo_text"
                     android:duplicateParentState="true"
                     android:textColor="#FFFFFF"
-                    android:textSize="17sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/ll_appointment"
-                android:layout_width="fill_parent"
-                android:layout_height="55dp"
-                android:background="#333333"
-                android:gravity="left|center"
-                android:orientation="vertical" >
-
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:background="#333333"
-                    android:gravity="left|center"
-                    android:orientation="vertical"
-                    android:paddingLeft="10dp"
-                    android:text="Appointment"
-                    android:textColor="#FFFFFF"
-                    android:duplicateParentState="true"
                     android:textSize="17sp" />
             </LinearLayout>
 
@@ -229,4 +210,4 @@
     </RelativeLayout>
     <!-- Slider end -->
 
-</android.support.v4.widget.DrawerLayout>
+ </android.support.v4.widget.DrawerLayout>

@@ -15,6 +15,8 @@ public class Constants {
 	public static int DOCTOR = 2;
 	public static int ADMIN  =3;
 	
+	public static String loginType = "";
+	
 	public static String IMAGEPATH = "http://clickfordevelopers.com/demo/seedstir/upload/professional/";
 	public static String ADMIN_LOGIN =   "http://devlpconsole.com/hospital/adminLogin.php";
 	public static String USER_LOGIN =   "http://devlpconsole.com/hospital/userLogin.php";
@@ -51,6 +53,8 @@ public class Constants {
 	
 	public static String UPDATE_PROBLEM_DETAILS= "http://devlpconsole.com/hospital/updateslot.php";
 	
+	public static String ALL_PRESCRIPTION_LIST= "http://devlpconsole.com/hospital/getAllPrescriptionRecords.php";
+	
 	public enum values{
 		USRINFO,
 		ADMININFO,
@@ -62,7 +66,7 @@ public class Constants {
 		USERID,
 		PROFILEID,
 		FIRSTNAME,
-		LASTNAME,
+		LASTNAME,      
 		ADDRESS,
 		PROFILEPIC,
 		DOB,

@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
@@ -35,7 +36,7 @@ public class DoctorSlotBooking implements OnClickListener{
 	private Calendar cal;
 	private Spinner spinner_date;
 	private int pos_date;
-	private ListView listView1;
+	private LinearLayout listView1;
 	private Button button1;
 	private DocAvailAdapter adapter;
 	private ArrayList<DocSlotBean> ArrDoc = new ArrayList<DocSlotBean>();
@@ -44,7 +45,7 @@ public class DoctorSlotBooking implements OnClickListener{
 		this.base = b;
 		view = View.inflate(base, R.layout.doctor_view_appointment, null);
 		spinner_date = (Spinner)view.findViewById(R.id.spinner_date);
-		listView1  = (ListView)view.findViewById(R.id.listView1);
+		listView1  = (LinearLayout)view.findViewById(R.id.listView1);
 		button1 = (Button)view.findViewById(R.id.button1);
 		button1.setOnClickListener(this);
 		cal = Calendar.getInstance();
@@ -111,20 +112,21 @@ public class DoctorSlotBooking implements OnClickListener{
 			String response = HttpClient.SendHttpPost(Constants.GET_DOC_SLOT, ob.toString());
 			
 			if(response != null){
+				ArrDoc.clear();
 				JSONObject obj = new JSONObject(response);
-				if(obj.getBoolean("status")){
-					JSONArray arr = obj.getJSONArray("array");
+				//if(obj.getBoolean("status")){
+					JSONArray arr = obj.getJSONArray("slotsArray");
 					
 					for(int i = 0;i<arr.length();i++){
 						JSONObject object = arr.getJSONObject(i);
-						String name = object.getString("name");
-						String date = object.getString("date");
-						String desvc = object.getString("desc");
+						String name = object.getString("patient_name");
+						String date = object.getString("slot");
+						String desvc = object.getString("description");
 						ArrDoc.add(new DocSlotBean(name, date, desvc));
 					}
 						
 				updateUi();
-			}
+			//}
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
@@ -136,8 +138,12 @@ public class DoctorSlotBooking implements OnClickListener{
 			
 			@Override
 			public void run() {
-				adapter = new DocAvailAdapter(base, R.layout.grid_row,ArrDoc);
-				listView1.setAdapter(adapter);
+				listView1.removeAllViews();
+				for(int i=0; i<ArrDoc.size(); i++){
+					listView1.addView(new DocAvailAdapter(base, ArrDoc.get(i).getName(), ArrDoc.get(i).getTime(), ArrDoc.get(i).getDesc()).v);
+				}
+				/*adapter = new DocAvailAdapter(base, R.layout.grid_row,ArrDoc);
+				listView1.setAdapter(adapter);*/
 				
 			}
 		});

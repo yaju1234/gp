@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- <ScrollView 
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@color/white"
     android:fillViewport="true"
     android:orientation="vertical"
-    android:padding="7dp"
-    android:scrollbars="none" >
+ 
+    android:scrollbars="none" > -->
 
-    <RelativeLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+           android:padding="7dp"
         android:orientation="vertical" >
 
         <RelativeLayout
@@ -44,7 +46,8 @@
                         android:layout_gravity="bottom"
                         android:layout_marginBottom="3dp"
                         android:layout_marginRight="-9dp"
-                        android:src="@drawable/camera_icon" />
+                        android:src="@drawable/camera_icon"
+                        android:visibility="invisible" />
 
                     <LinearLayout
                         android:id="@+id/ll_upload_image"
@@ -105,9 +108,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:layout_below="@+id/rl_username_header"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:background="@color/white" >
+                android:background="@color/white"
+                android:orientation="vertical" >
             </LinearLayout>
 
             <RelativeLayout
@@ -120,19 +122,6 @@
                 android:background="@color/ash"
                 android:gravity="center|top" >
 
-                <!--
-                     <TextView
-                    android:id="@+id/tv_edit_profile"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="14dp"
-                    android:text="Edit Profile"
-                    android:textColor="@color/black"
-                    android:textSize="15sp" />
-                -->
-
                 <TextView
                     android:id="@+id/tv_leave_req"
                     android:layout_width="wrap_content"
@@ -142,27 +131,26 @@
                     android:text="Leave Request"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
-               
 
                 <TextView
                     android:id="@+id/tv_logout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/tv_leave_req"
+                    android:layout_below="@+id/tv_appointment"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="14dp"
                     android:gravity="center"
                     android:text="Logout"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
-                
-                 <TextView
+
+                <TextView
                     android:id="@+id/tv_appointment"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_leave_req"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="14dp"
-                    android:layout_below="@+id/tv_logout"
                     android:text="View Slot"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
@@ -170,4 +158,4 @@
         </RelativeLayout>
     </RelativeLayout>
 
-</ScrollView>
+<!-- </ScrollView> -->
