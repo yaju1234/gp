@@ -40,6 +40,7 @@ public class DoctorAvalibility implements OnClickListener{
 	
 	private Button btn_load;
 	public String[] myStringArray ;
+	public String[] disableArray ;
 	
 	private SlotAdapter adapter;
 	private int pos_date;
@@ -129,25 +130,43 @@ public class DoctorAvalibility implements OnClickListener{
 				slotarray.clear();
 				JSONObject obj = new JSONObject(response);
 				if(obj.getBoolean("status")){
-					JSONArray arr = obj.getJSONArray("slots");
+					JSONObject objct = obj.getJSONObject("slotsarray");
+					JSONArray arr = objct.getJSONArray("enabledArray");
 					myStringArray = new String[arr.length()];
 					for(int i = 0;i<arr.length();i++){
 						JSONObject object = arr.getJSONObject(i);
 						myStringArray[i] = object.getString("slot");
 					}
+					JSONArray arr2 = objct.getJSONArray("disabledArray");
+					disableArray = new String[arr2.length()];
+					for(int k = 0;k<arr2.length();k++){
+						JSONObject object = arr2.getJSONObject(k);
+						disableArray[k] = object.getString("slot");
+					}
 					for(int j = 1;j<=20;j++){
 						int id = j;
-						boolean status = false;
+						String types = "open";
+						boolean flag = false;
 						for(int k = 0;k<myStringArray.length;k++){
 							if(j == Integer.parseInt(myStringArray[k])){
-								status = true;
+								types = "booked";
+								flag = true;
 							}
 						}
-						slotarray.add(new SlotBean(id, status));
+						if(!flag){
+							for(int a = 0;a<disableArray.length;a++){
+								if(j == Integer.parseInt(disableArray[a])){
+									types = "disable";
+								}
+							}
+						}else {
+							flag = false;
+						}
+						slotarray.add(new SlotBean(id, types));
 					}
 				}else{
 					for(int m = 1;m<= 20;m++){
-						slotarray.add(new SlotBean(m, false));
+						slotarray.add(new SlotBean(m, "open"));
 					}
 				}				
 				updateUi();

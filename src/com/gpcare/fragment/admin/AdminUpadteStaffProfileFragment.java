@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gpcare.bean.NurseBean;
 import com.gpcare.bean.StuffBean;
@@ -43,6 +44,8 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 	private ImageLoader imageloader;
 	private LinearLayout ll_body;
 	private View vi;
+	
+	private String type  = null;
 	
 	public AdminUpadteStaffProfileFragment(BaseScreen b){
 		base = b;
@@ -82,8 +85,10 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 	private void getstaffList() {
 		Thread t = new Thread(){
 			public void run(){
+				docList.clear();
+				nurseList.clear();
+				stuffList.clear();
 				getAllstuffList();
-				
 			}
 		};
 		t.start();
@@ -109,7 +114,8 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 				JSONArray arr2 = jobj.getJSONArray("nurseArray");
 				for(int i = 0;i<arr2.length();i++){
 					JSONObject ob = arr2.getJSONObject(i);
-					nurseList.add(new NurseBean(ob.getString("nurse_name"),
+					nurseList.add(new NurseBean(ob.getString("nurse_id"),
+							ob.getString("nurse_name"),
 							ob.getString("nurse_specialization"),
 							ob.getString("nurse_degree")));
 				}
@@ -117,7 +123,8 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 				JSONArray arr3 = jobj.getJSONArray("supportstuffArray");
 				for(int i = 0;i<arr3.length();i++){
 					JSONObject ob = arr3.getJSONObject(i);
-					stuffList.add(new StuffBean(ob.getString("stuff_name"),
+					stuffList.add(new StuffBean(ob.getString("stuff_id"),
+							ob.getString("stuff_name"),
 							ob.getString("stuff_specialization"),
 							ob.getString("stuff_degree")));
 				}
@@ -136,10 +143,20 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 			public void run() {
 				ll_doctors_container.removeAllViews();
 				for(int i = 0;i< docList.size();i++){
-					vi = LayoutInflater.from(base).inflate(R.layout.doctor_list_row, null);
+					final int j = i;
+					vi = LayoutInflater.from(base).inflate(R.layout.doctor_list_row_update, null);
 					TextView tv_specilization = (TextView)vi.findViewById(R.id.tv_specilization);
 					TextView tv_name = (TextView)vi.findViewById(R.id.tv_name);
 					ImageView iv_friend_image = (ImageView)vi.findViewById(R.id.iv_friend_image);
+					Button btn_delete = (Button)vi.findViewById(R.id.btn_delete);
+					
+					btn_delete.setOnClickListener(new OnClickListener() {						
+						@Override
+						public void onClick(View v) {
+							type = "doc";
+							deleteProfile(type,docList.get(j).getId());
+						}
+					});
 										
 					tv_specilization.setText(docList.get(i).getSpecialization());
 					tv_name.setText(docList.get(i).getName());
@@ -151,13 +168,23 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 				
 				ll_nurse_container.removeAllViews();
 				for(int i = 0;i< nurseList.size();i++){
-					vi = LayoutInflater.from(base).inflate(R.layout.doctor_list_row, null);
+					final int j = i;
+					vi = LayoutInflater.from(base).inflate(R.layout.doctor_list_row_update, null);
 					TextView tv_specilization = (TextView)vi.findViewById(R.id.tv_specilization);
 					TextView tv_name = (TextView)vi.findViewById(R.id.tv_name);
 					ImageView iv_friend_image = (ImageView)vi.findViewById(R.id.iv_friend_image);
+					Button btn_delete = (Button)vi.findViewById(R.id.btn_delete);
+					
+					btn_delete.setOnClickListener(new OnClickListener() {						
+						@Override
+						public void onClick(View v) {
+							type = "stuff";
+							deleteProfile(type,nurseList.get(j).getNurse_id());
+						}
+					});
 										
-					tv_specilization.setText(nurseList.get(i).getnurse_specilization());
-					tv_name.setText(nurseList.get(i).getnurse_name());
+					tv_specilization.setText(nurseList.get(i).getNurse_specilization());
+					tv_name.setText(nurseList.get(i).getNurse_name());
 					//imageloader.DisplayImage("", iv_friend_image);
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									
@@ -166,13 +193,23 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 				
 				ll_stuff_container.removeAllViews();
 				for(int i = 0;i< stuffList.size();i++){
-					vi = LayoutInflater.from(base).inflate(R.layout.doctor_list_row, null);
+					final int j = i;
+					vi = LayoutInflater.from(base).inflate(R.layout.doctor_list_row_update, null);
 					TextView tv_specilization = (TextView)vi.findViewById(R.id.tv_specilization);
 					TextView tv_name = (TextView)vi.findViewById(R.id.tv_name);
 					ImageView iv_friend_image = (ImageView)vi.findViewById(R.id.iv_friend_image);
+					Button btn_delete = (Button)vi.findViewById(R.id.btn_delete);
 										
-					tv_specilization.setText(stuffList.get(i).getstuff_specilization());
-					tv_name.setText(stuffList.get(i).getstuff_name());
+					btn_delete.setOnClickListener(new OnClickListener() {						
+						@Override
+						public void onClick(View v) {
+							type = "stuff";
+							deleteProfile(type,stuffList.get(j).getStuff_id());
+						}
+					});
+					
+					tv_specilization.setText(stuffList.get(i).getStuff_specilization());
+					tv_name.setText(stuffList.get(i).getStuff_name());
 					//imageloader.DisplayImage("", iv_friend_image);
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									
@@ -181,5 +218,44 @@ public class AdminUpadteStaffProfileFragment extends Fragment implements OnClick
 			}
 		});
 	}
-
+	private void deleteProfile(final String type, final String id) {
+		Thread t = new Thread(){
+			public void run(){
+				base.doShowLoading();
+				callWebService(type,id);
+				base.doRemoveLoading();
+			}
+		};
+		t.start();
+	}
+	private void callWebService(String type2, String id) {
+		String response = null;
+		JSONObject obj = new JSONObject();
+		try {
+			
+			if(type2.equalsIgnoreCase("doc")){
+				obj.put("docid", id);
+				response = HttpClient.SendHttpPost(Constants.DOCTOR_DELETE, obj.toString());
+			}else if(type2.equalsIgnoreCase("stuff")){
+				obj.put("staffid", id);
+				response = HttpClient.SendHttpPost(Constants.STUFF_DELETE, obj.toString());
+			}
+			
+			if(response != null){
+				JSONObject OB = new JSONObject(response);
+				if(OB.getBoolean("status")){
+					base.runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							Toast.makeText(base, "Deleted successfully", 3000).show();
+							getstaffList();
+						}
+					});
+				}
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+	}
 }

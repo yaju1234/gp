@@ -3,27 +3,35 @@ package com.gpcare.bean;
 public class SlotBean {
 
 	public int id;
-	public Boolean status;
+	public String type;
 	
-	public SlotBean(int id, Boolean status) {
+	
+	public SlotBean(int id, String type) {
 		super();
 		this.id = id;
-		this.status = status;
+		this.type = type;
 	}
+
 
 	public int getId() {
 		return id;
 	}
 
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public Boolean getStatus() {
-		return status;
+
+	public String getType() {
+		return type;
 	}
 
-	public void setStatus(Boolean status) {
-		this.status = status;
+
+	public void setType(String type) {
+		this.type = type;
 	}
+	
+
+	
 }

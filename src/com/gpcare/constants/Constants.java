@@ -55,6 +55,12 @@ public class Constants {
 	
 	public static String ALL_PRESCRIPTION_LIST= "http://devlpconsole.com/hospital/getAllPrescriptionRecords.php";
 	
+	public static String DISABLE_SLOT = "http://devlpconsole.com/hospital/updateHolidaySlot.php";
+	
+	public static String DOCTOR_DELETE = "http://devlpconsole.com/hospital/deleteDoctor.php";
+	public static String STUFF_DELETE = "http://devlpconsole.com/hospital/deleteStaff.php";
+	
+	
 	public enum values{
 		USRINFO,
 		ADMININFO,

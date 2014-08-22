@@ -68,8 +68,8 @@ public class HomeFragment extends Fragment implements SignUpListener,SignInListe
 		btn_doctor_login = (Button)view.findViewById(R.id.btn_doctor_login);
 		btn_doctor_login.setOnClickListener(this);
 		
-		if(!loginType.equalsIgnoreCase("")){
-			if(loginType.equalsIgnoreCase("user")){
+		if(!Constants.loginType.equalsIgnoreCase("")){
+			if(Constants.loginType.equalsIgnoreCase("user")){
 				System.out.println("!--reach here999"+base.app.getUserinfo().session);
 				System.out.println("!--reach here999"+base.app.getDoctorinfo().session);
 				gotosignIn();

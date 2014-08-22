@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class SignInView implements OnClickListener{
 	
@@ -95,6 +96,13 @@ public class SignInView implements OnClickListener{
 				base.app.getAdmininfo().SetAdminInfo(userid,email, fname, lname, image);
 				base.app.getAdmininfo().setSession(true);	
 				updateUi();
+				}else{
+					base.runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							Toast.makeText(base, "Invalid User Id or Password", 3000).show();
+						}
+					});
 				}
 			}
 		} catch (JSONException e) {

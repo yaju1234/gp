@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gpcare.constants.Constants;
 import com.gpcare.network.HttpClient;
@@ -60,7 +61,6 @@ public class SignInView implements OnClickListener{
 		
 		btn_login.setOnClickListener(this);
 		btn_signup.setOnClickListener(this);
-		
 	}
 	
 	public boolean isvalidLogin(){
@@ -76,7 +76,6 @@ public class SignInView implements OnClickListener{
 		return flag;
 	}
 
-	
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.btn_login:
@@ -137,12 +136,18 @@ public class SignInView implements OnClickListener{
 					base.app.getUserinfo().SetUserInfo(userid, fname, lname,email,image,address,image,dob,contact,emg_contact,true);
 					}
 					updateUi();
+				}else{
+					base.runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							Toast.makeText(base, "Invalid User Id or Password", 3000).show();
+						}
+					});
 				}
 			}
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
 	}
 
 	private void updateUi() {

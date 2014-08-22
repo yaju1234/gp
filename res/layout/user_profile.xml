@@ -109,7 +109,7 @@
             <RelativeLayout
                 android:id="@+id/rl_cointainer"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="420dp"
                 android:layout_below="@+id/rl_username_header"
                 android:layout_gravity="center"
                 android:background="@color/white" >

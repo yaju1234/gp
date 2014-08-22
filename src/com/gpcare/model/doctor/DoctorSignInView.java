@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class DoctorSignInView implements OnClickListener{
 	
@@ -80,8 +81,7 @@ public class DoctorSignInView implements OnClickListener{
 			String response = HttpClient.SendHttpPost(Constants.ADMIN_LOGIN, request.toString());
 			if(response != null){
 				JSONObject jsonres = new JSONObject(response);
-				if(jsonres.getBoolean("status")){
-					
+				if(jsonres.getBoolean("status")){					
 					userid = jsonres.getString("id");
 					fname  = jsonres.getString("fname");
 					lname  = jsonres.getString("lname");
@@ -91,6 +91,13 @@ public class DoctorSignInView implements OnClickListener{
 					specilization = jsonres.getString("specialization");
 					base.app.getDoctorinfo().SetDoctorInfo(userid, fname, lname, email, image,degree, specilization, true);
 				updateUi();
+				}else{
+					base.runOnUiThread(new Runnable() {
+						@Override
+						public void run() {
+							Toast.makeText(base, "Invalid User Id or Password", 3000).show();
+						}
+					});
 				}
 			}
 		} catch (JSONException e) {

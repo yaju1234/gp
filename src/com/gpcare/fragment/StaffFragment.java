@@ -87,6 +87,7 @@ public class StaffFragment extends Fragment{
 				for(int i = 0;i<arr2.length();i++){
 					JSONObject ob = arr2.getJSONObject(i);
 					nurseList.add(new NurseBean(ob.getString("nurse_name"),
+							ob.getString("nurse_name"),
 							ob.getString("nurse_specialization"),
 							ob.getString("nurse_degree")));
 				}
@@ -95,6 +96,7 @@ public class StaffFragment extends Fragment{
 				for(int i = 0;i<arr3.length();i++){
 					JSONObject ob = arr3.getJSONObject(i);
 					stuffList.add(new StuffBean(ob.getString("stuff_name"),
+							ob.getString("stuff_name"),
 							ob.getString("stuff_specialization"),
 							ob.getString("stuff_degree")));
 				}
@@ -131,8 +133,8 @@ public class StaffFragment extends Fragment{
 					TextView tv_name = (TextView)vi.findViewById(R.id.tv_name);
 					ImageView iv_friend_image = (ImageView)vi.findViewById(R.id.iv_friend_image);
 										
-					tv_specilization.setText(nurseList.get(i).getnurse_specilization());
-					tv_name.setText(nurseList.get(i).getnurse_name());
+					tv_specilization.setText(nurseList.get(i).getNurse_specilization());
+					tv_name.setText(nurseList.get(i).getNurse_name());
 					//imageloader.DisplayImage("", iv_friend_image);
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									
@@ -146,8 +148,8 @@ public class StaffFragment extends Fragment{
 					TextView tv_name = (TextView)vi.findViewById(R.id.tv_name);
 					ImageView iv_friend_image = (ImageView)vi.findViewById(R.id.iv_friend_image);
 										
-					tv_specilization.setText(stuffList.get(i).getstuff_specilization());
-					tv_name.setText(stuffList.get(i).getstuff_name());
+					tv_specilization.setText(stuffList.get(i).getStuff_specilization());
+					tv_name.setText(stuffList.get(i).getStuff_name());
 					//imageloader.DisplayImage("", iv_friend_image);
 					iv_friend_image.setImageResource(R.drawable.frnd_no_img);
 									
